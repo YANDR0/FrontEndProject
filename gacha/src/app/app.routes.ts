@@ -9,6 +9,8 @@ import { UserListComponent } from './components/pages/user/user-list/user-list.c
 import { UserConfigComponent } from './components/pages/user/user-config/user-config.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RecordComponent } from './components/pages/record/record.component';
+import { RestaurantOverviewComponent } from './components/pages/restaurant/restaurant-overview/restaurant-overview.component';
+import { UserOverviewComponent } from './components/pages/restaurant/user-overview/user-overview.component';
 
 
 export const routes: Routes = [
@@ -21,13 +23,15 @@ export const routes: Routes = [
     { path: 'record/:id', component: RecordComponent},
 
     { path: 'restaurant/:id', component: RestaurantComponent, children: [
-        {path: 'reviews', component: RestaurantReviewsComponent}
+        { path: '', component: RestaurantOverviewComponent},
+        { path: 'reviews', component: RestaurantReviewsComponent}
     ]},
 
     { path: 'user/:id', component: UserComponent, children: [
-        {path: 'list', component: UserListComponent},
-        {path: 'list/:id', component: UserListComponent},
-        {path: 'config', component: UserConfigComponent}
+        { path: '', component: UserOverviewComponent},
+        { path: 'list', component: UserListComponent},
+        { path: 'list/:id', component: UserListComponent},
+        { path: 'config', component: UserConfigComponent}
     ]},
 
     { path: '**', component: NotFoundComponent}
