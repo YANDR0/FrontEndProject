@@ -10,7 +10,8 @@ import { UserConfigComponent } from './components/pages/user/user-config/user-co
 import { LoginComponent } from './components/pages/login/login.component';
 import { RecordComponent } from './components/pages/record/record.component';
 import { RestaurantOverviewComponent } from './components/pages/restaurant/restaurant-overview/restaurant-overview.component';
-import { UserOverviewComponent } from './components/pages/restaurant/user-overview/user-overview.component';
+import { UserOverviewComponent } from './components/pages/user/user-overview/user-overview.component';
+
 
 
 export const routes: Routes = [
