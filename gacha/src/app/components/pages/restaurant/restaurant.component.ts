@@ -8,6 +8,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
-export class RestaurantComponent {
+export class RestaurantComponent { 
 
 }
