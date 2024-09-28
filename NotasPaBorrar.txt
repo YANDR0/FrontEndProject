@@ -1,0 +1,6 @@
+
+Search component: Lista general de restaurantes donde después veré donde van los filtros
+
+Restaurant component: La orilla con datos generales
+	Overview: Datos más especificos y esas cosas
+	Reviews: Reemplzar data con gente peleando
