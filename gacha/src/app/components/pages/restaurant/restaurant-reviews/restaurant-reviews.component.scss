@@ -8,5 +8,10 @@
 }
 
 mat-card{
-    margin: 10px;
+    margin: 15px 0px;
+    mat-card-header{
+        border-radius: 11px;
+        background-color:rgb(121, 73, 28);
+        margin-bottom: 10px;
+    }
 }

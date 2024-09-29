@@ -19,6 +19,7 @@ h1{
 .Portada{
     .Rating{
         width: 50%;
+        float: left;
         * {
             height: 100%;
             padding: 6px 25px;
@@ -26,9 +27,11 @@ h1{
         }
     }
     > div {
-        text-align: center;
-        float: left;
-        width: (50% / 3);
+        a {
+            margin: 10px;
+            text-align: right;
+            float: right;
+        }
     }
 }
 

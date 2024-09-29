@@ -1,0 +1,45 @@
+
+main{
+    margin: 16px 64px;
+}
+
+.search{
+    text-align: center;
+    div{
+        margin: 10px;
+        height: 80px;
+        mat-slider {
+            width: 300px;
+          }
+    }
+}
+
+
+.results{
+    display: table;
+    width: 100%;
+    > div{
+        width: 25%;
+        float: left;
+        mat-card{
+            height: 250px;
+            overflow:hidden;
+            div{
+                height: 150px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+            text-align: center;
+            margin: 10px 20px;
+        }
+
+    }
+}
+
+.results::after{
+    content: "";
+    display: table;
+    clear: both;
+}
