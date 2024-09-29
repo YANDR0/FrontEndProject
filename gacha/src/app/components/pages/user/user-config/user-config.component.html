@@ -1,18 +1,26 @@
 <body class="main-container">
-    <section class="form-bg">
+    <!-- Contenedor principal de la página -->
+    <section class="form-background">
+        <!-- Sección que contiene el formulario con un fondo de distinto color -->
+
         <mat-form-field class="username">
-            <mat-label>Username</mat-label>
-            <input matInput value="Maigol">
+            <!-- Campo de texto para ingresar el nombre de usuario -->
+            <mat-label>Username</mat-label> <!-- Etiqueta para el campo de texto -->
+            <input matInput value="Maigol"> <!-- Entrada de texto con valor predefinido "Maigol" -->
         </mat-form-field>
 
         <mat-form-field class="image">
-            <mat-label>Image</mat-label>
+            <!-- Campo de texto para la URL de la imagen -->
+            <mat-label>Image</mat-label> <!-- Etiqueta para el campo de texto -->
             <input matInput value="https://github.com/Maigol193/assets_tarea3/blob/main/spideramerica.jpg?raw=true">
+            <!-- Entrada de texto con la URL de la imagen predefinida -->
         </mat-form-field>
 
         <mat-form-field class="ubicacion">
-            <mat-label>Select</mat-label>
+            <!-- Campo desplegable para seleccionar la ubicación -->
+            <mat-label>Ubicación</mat-label> <!-- Etiqueta para el campo de selección -->
             <mat-select value="three">
+                <!-- Menú desplegable con valor predefinido "San Pedro Tlaquepaque, Jalisco" -->
                 <mat-option value="one">Guadalajara, Jalisco</mat-option>
                 <mat-option value="two">Zapopan, Jalisco</mat-option>
                 <mat-option value="three">San Pedro Tlaquepaque, Jalisco</mat-option>
@@ -26,14 +34,19 @@
         </mat-form-field>
 
         <mat-form-field class="biografia">
-            <mat-label>Biografía</mat-label>
+            <!-- Campo de texto para ingresar la biografía del usuario -->
+            <mat-label>Biografía</mat-label> <!-- Etiqueta para el campo de texto -->
             <textarea
-                matInput>Miguel, mejor conocido como Maigol193. Como bien dicen por ahí, la vida de un critico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.</textarea>
+                matInput>Miguel, mejor conocido como Maigol193. Como bien dicen por ahí, la vida de un crítico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.</textarea>
+            <!-- Campo de texto de biografía con un valor predefinido -->
         </mat-form-field>
 
-        <div class="button-container">
+        <section class="button-container">
+            <!-- Sección para los botones de acciones -->
             <button mat-flat-button class="button" routerLink="..">Cancel</button>
+            <!-- Botón para cancelar, usando estilo plano -->
             <button mat-stroked-button class="button" routerLink="..">Confirm</button>
-        </div>
+            <!-- Botón para confirmar, usando estilo contorneado -->
+        </section>
     </section>
 </body>

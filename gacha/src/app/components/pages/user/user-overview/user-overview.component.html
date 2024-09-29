@@ -1,37 +1,48 @@
-<section class="profile-header">
-    <div class="profile-picture">
+<section class="overview-header">
+  <!-- Sección del encabezado del perfil que contiene la imagen de perfil, el nombre y un color difuminado-->
+    <section class="profile-picture">
+        <!-- Sección para la imagen de perfil -->
         <img mat-card-avatar src="https://github.com/Maigol193/assets_tarea3/blob/main/spideramerica.jpg?raw=true" alt="Profile Image">
-    </div>
-    <div class="profile-info">
+    </section>
+    <section class="profile-info">
+        <!-- Sección para el username del perfil -->
         <h1>Maigol</h1>
-    </div>
+    </section>
 </section>
 
 <body>
-    <section class="container">
-        <mat-card class="left-card">
-          <mat-card-header>
-            <mat-card-title>Biografía</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            Miguel, mejor conocido como Maigol193. <br> Como bien dicen por ahí, la vida de un critico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.
-          </mat-card-content>
-        </mat-card>
-      
-        <div class="right-section">
-          <mat-card class="right-card">
+    <section class="overview-body">
+        <!-- Body del overview, contiene dos cards (Biografía y Ubicación) y dos botones (My List y Edit) -->
+        <mat-card class="biography-card">
+            <!-- Card izquierda (Biografia) -->
             <mat-card-header>
-              <mat-card-title>Ubicación</mat-card-title>
+                <mat-card-title>Biografía</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              San Pedro Tlaquepaque, Jalisco
+                Miguel, mejor conocido como Maigol193. <br>
+                Como bien dicen por ahí, la vida de un crítico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.
             </mat-card-content>
-          </mat-card>
+        </mat-card>
+      
+        <section class="right-section">
+            <!-- Sección derecha que contiene una card y dos botones -->
+            <mat-card class="location-card">
+                <!-- Card derecha (Ubicación) -->
+                <mat-card-header>
+                    <mat-card-title>Ubicación</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    San Pedro Tlaquepaque, Jalisco
+                </mat-card-content>
+            </mat-card>
           
-          <div class="button-container">
-            <button mat-raised-button color="primary" class="button" routerLink="list">My Restaurant List</button>
-            <button mat-raised-button color="accent" class="button" routerLink="config">Edit</button>
-          </div>
-        </div>
+            <section class="buttons-section">
+                <!-- Sección para los dos botones de opciones de navegación -->
+                <button mat-raised-button color="primary" class="button" routerLink="list">My Restaurant List</button>
+                <!-- Botón para ir a la lista de restaurantes -->
+                <button mat-raised-button color="accent" class="button" routerLink="config">Edit</button>
+                <!-- Botón para editar el perfil -->
+            </section>
+        </section>
     </section>     
 </body>

@@ -1,21 +1,21 @@
-.profile-header {
+.overview-header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to bottom, #1e3451, #0d1622); // Gradiente de fondo
+    background: linear-gradient(to bottom, #1e3451, #0d1622); // Permite tener un fondo difuminado
     padding: 20px;
     color: white;
 
     .profile-picture {
         width: 150px;
         height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
+        border-radius: 50%; // Imagen redonda
+        overflow: hidden; // Ajusta la imagen al contenedor
 
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; // Imagen proporcional al contenedor
         }
     }
 
@@ -23,7 +23,7 @@
         margin-top: 10px;
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 30px;
             font-weight: bold;
             color: white;
         }
@@ -31,48 +31,40 @@
 }
 
 body {
-    margin: 0; /* Asegura que no haya márgenes en el body */
-    display: flex; /* Usar flexbox para centrar */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    margin: 0; // Elimina el margen predeterminado del body
+    display: flex; // Usa flexbox para organizar el contenido
+    justify-content: center; // Centra el contenido horizontalmente 
+    align-items: center; // Centra el contenido verticalmente 
 }
 
-.container {
-    display: flex;
-    width: 70%;
+.overview-body {
+    display: flex; // Usa flexbox para dividir las tarjetas en dos secciones (izquierda y derecha) 
+    width: 70%; 
     height: 150px;
-    /* Ajusta la altura según sea necesario */
 }
 
-.left-card {
+.biography-card {
     width: 50%;
-    margin-right: 10px;
-    /* Espacio entre las cards */
+    margin-right: 10px; // Espacio entre las tarjetas 
 }
 
 .right-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; // Los elementos dentro de esta sección (tarjeta y botones) se organizan en columna 
     width: 50%;
 }
 
-.right-card {
-    flex: 1;
-    /* Esto permite que la card ocupe el espacio disponible */
-    margin-bottom: 10px;
-    /* Espacio entre la card y los botones */
+.location-card {
+    flex: 1; // Permite que la tarjeta se expanda para ocupar el espacio disponible 
+    margin-bottom: 10px; // Espacio entre la tarjeta y los botones 
 }
 
-.button-container {
-    display: flex;
-    /* Alinea los botones horizontalmente */
-    justify-content: space-between;
-    /* Espacia los botones */
+.buttons-section{
+    display: flex; // Usa flexbox para alinear los botones horizontalmente 
+    justify-content: space-between; // Distribuye los botones equitativamente 
 }
 
 .button {
-    flex: 1;
-    /* Asegura que los botones ocupen el mismo espacio */
-    margin-left: 5px;
-    /* Espacio entre los botones */
+    flex: 1; // Asegura que los botones ocupen el mismo espacio 
+    margin-left: 5px; // Espacio entre los botones 
 }
