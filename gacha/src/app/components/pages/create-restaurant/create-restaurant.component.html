@@ -1,0 +1,49 @@
+<section>
+    <h1>Create a Restaurant</h1>
+    <div class="requiredFields">
+        <!--TODO add validations-->
+        <form>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" name="name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Location</mat-label>
+                <input matInput type="text" name="location" required>
+            </mat-form-field>
+            <mat-form-field>
+                <!--TODO How to upload files-->
+                <mat-label>Logo</mat-label>
+                <input matInput name="logo" required>
+            </mat-form-field>
+            <mat-form-field>
+                <!--TODO How to upload files-->
+                <mat-label>Menu</mat-label>
+                <input matInput name="menu" required>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="optionalFields">
+        <!--TODO Add and modify fields base on model-->
+        <form>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput type="text" name="phone">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Website</mat-label>
+                <input matInput type="text" name="website">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Opening Hours</mat-label>
+                <input matInput type="text" name="openingHours">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Closing Hours</mat-label>
+                <input matInput type="text" name="closingHours">
+            </mat-form-field>
+        </form>
+    </div>
+    <button mat-flat-button class="accepted">Create</button>
+    <button mat-flat-button class="cancelled">Cancel</button>
+</section>

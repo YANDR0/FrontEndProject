@@ -1,0 +1,53 @@
+section {
+    margin-left: 280px;
+    margin-right: 280px;
+    margin-top: 30px;
+    margin-bottom: 350px;
+
+    mat-card {
+        width: 180px;
+        height: 265px;
+        margin-right: 40px;
+        float: left;
+
+        :hover {
+            cursor: pointer;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .list-item-container {
+        display: flex;
+        align-items: center;
+
+        b {
+            width: 45px;
+            text-align: right;
+            font-size: 20px;
+            color: gray;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        mat-list-item {
+            height: 80px;
+            margin-bottom: 20px;
+            background-color: rgb(21, 31, 46);
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+
+        }
+    }
+}
+
+section:last-of-type {
+    margin-bottom: 75px;
+}

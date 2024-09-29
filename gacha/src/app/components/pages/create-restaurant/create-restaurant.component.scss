@@ -1,0 +1,24 @@
+section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+
+    mat-form-field {
+        margin-right: 12px;
+    }
+
+    button {
+        margin-top: 20px;
+        margin-right: 15px;
+        color: white;
+    }
+
+    .accepted {
+        background-color: green;
+    }
+
+    .cancelled {
+        background-color: red;
+    }
+}
