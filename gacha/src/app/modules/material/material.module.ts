@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule, 
-    MatSliderModule
+    MatSliderModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule { }
