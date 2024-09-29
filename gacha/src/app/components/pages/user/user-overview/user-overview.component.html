@@ -1,1 +1,37 @@
-<p>user-overview works!</p>
+<section class="profile-header">
+    <div class="profile-picture">
+        <img mat-card-avatar src="https://github.com/Maigol193/assets_tarea3/blob/main/spideramerica.jpg?raw=true" alt="Profile Image">
+    </div>
+    <div class="profile-info">
+        <h1>Maigol</h1>
+    </div>
+</section>
+
+<body>
+    <section class="container">
+        <mat-card class="left-card">
+          <mat-card-header>
+            <mat-card-title>Biografía</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            Miguel, mejor conocido como Maigol193. <br> Como bien dicen por ahí, la vida de un critico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.
+          </mat-card-content>
+        </mat-card>
+      
+        <div class="right-section">
+          <mat-card class="right-card">
+            <mat-card-header>
+              <mat-card-title>Ubicación</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              San Pedro Tlaquepaque, Jalisco
+            </mat-card-content>
+          </mat-card>
+          
+          <div class="button-container">
+            <button mat-raised-button color="primary" class="button" routerLink="list">My Restaurant List</button>
+            <button mat-raised-button color="accent" class="button" routerLink="config">Edit</button>
+          </div>
+        </div>
+    </section>     
+</body>

@@ -1,0 +1,78 @@
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #1e3451, #0d1622); // Gradiente de fondo
+    padding: 20px;
+    color: white;
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .profile-info {
+        margin-top: 10px;
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+    }
+}
+
+body {
+    margin: 0; /* Asegura que no haya márgenes en el body */
+    display: flex; /* Usar flexbox para centrar */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.container {
+    display: flex;
+    width: 70%;
+    height: 150px;
+    /* Ajusta la altura según sea necesario */
+}
+
+.left-card {
+    width: 50%;
+    margin-right: 10px;
+    /* Espacio entre las cards */
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.right-card {
+    flex: 1;
+    /* Esto permite que la card ocupe el espacio disponible */
+    margin-bottom: 10px;
+    /* Espacio entre la card y los botones */
+}
+
+.button-container {
+    display: flex;
+    /* Alinea los botones horizontalmente */
+    justify-content: space-between;
+    /* Espacia los botones */
+}
+
+.button {
+    flex: 1;
+    /* Asegura que los botones ocupen el mismo espacio */
+    margin-left: 5px;
+    /* Espacio entre los botones */
+}

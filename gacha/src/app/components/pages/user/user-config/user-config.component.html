@@ -1,1 +1,39 @@
-<p>user-config works!</p>
+<body class="main-container">
+    <section class="form-bg">
+        <mat-form-field class="username">
+            <mat-label>Username</mat-label>
+            <input matInput value="Maigol">
+        </mat-form-field>
+
+        <mat-form-field class="image">
+            <mat-label>Image</mat-label>
+            <input matInput value="https://github.com/Maigol193/assets_tarea3/blob/main/spideramerica.jpg?raw=true">
+        </mat-form-field>
+
+        <mat-form-field class="ubicacion">
+            <mat-label>Select</mat-label>
+            <mat-select value="three">
+                <mat-option value="one">Guadalajara, Jalisco</mat-option>
+                <mat-option value="two">Zapopan, Jalisco</mat-option>
+                <mat-option value="three">San Pedro Tlaquepaque, Jalisco</mat-option>
+                <mat-option value="four">Tlajomulco de Zúñiga, Jalisco</mat-option>
+                <mat-option value="five">Tonalá, Jalisco</mat-option>
+                <mat-option value="six">Ixtlahuacán de los Membrillos, Jalisco</mat-option>
+                <mat-option value="seven">Juanacatlán, Jalisco</mat-option>
+                <mat-option value="eight">El Salto, Jalisco</mat-option>
+                <mat-option value="nine">Zapotlanejo, Jalisco</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="biografia">
+            <mat-label>Biografía</mat-label>
+            <textarea
+                matInput>Miguel, mejor conocido como Maigol193. Como bien dicen por ahí, la vida de un critico es sencilla en muchos aspectos, arriesgamos poco y tenemos poder sobre aquellos que ofrecen su trabajo y su servicio a nuestro juicio.</textarea>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button mat-flat-button class="button" routerLink="..">Cancel</button>
+            <button mat-stroked-button class="button" routerLink="..">Confirm</button>
+        </div>
+    </section>
+</body>
