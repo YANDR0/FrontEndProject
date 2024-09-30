@@ -2,12 +2,13 @@ section {
     margin-left: 280px;
     margin-right: 280px;
     margin-top: 30px;
-    margin-bottom: 350px;
+    margin-bottom: 30px;
 
     mat-card {
         width: 180px;
         height: 265px;
         margin-right: 40px;
+        margin-bottom: 20px;
         float: left;
 
         :hover {
@@ -34,7 +35,7 @@ section {
             margin-bottom: 20px;
         }
 
-        mat-list-item {
+        mat-list-item { 
             height: 80px;
             margin-bottom: 20px;
             background-color: rgb(21, 31, 46);
@@ -46,6 +47,12 @@ section {
 
         }
     }
+}
+
+.cards::after{
+    content: "";
+    display: table;
+    clear: both;
 }
 
 section:last-of-type {
