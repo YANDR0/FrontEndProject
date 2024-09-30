@@ -1,0 +1,46 @@
+main{
+    margin: 16px 64px;
+}
+
+.router{
+    margin: 0px 80px;
+}
+
+.Carrusel{
+    background-color:black;
+    img{
+        height: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+h1{
+    font-size: 50px;
+}
+
+.Portada{
+    .Rating{
+        width: 50%;
+        float: left;
+        * {
+            height: 100%;
+            padding: 6px 25px;
+            width: fit-content;
+        }
+    }
+    > div {
+        a {
+            margin: 10px;
+            text-align: right;
+            float: right;
+        }
+    }
+}
+
+.Portada::after{
+    content: "";
+    display: table;
+    clear: both;
+}

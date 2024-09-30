@@ -1,4 +1,26 @@
+<section class="Carrusel">
+    <img src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/pollos.png" alt="Carrusel">
+</section>
+
 <main>
-    <p>restaurant works!</p>
-    <router-outlet></router-outlet>
+    <section>
+        <h1>Pollos hermanos</h1>
+        <section  class="Portada">
+            <div class="Rating">
+                <div><mat-card><mat-card-title>Calificación: 4/5 ★★★★☆</mat-card-title></mat-card></div>
+            </div>
+            <div>
+                <a mat-fab extended href="">Menú</a>
+                <a mat-fab extended href="restaurant/pollosHermanos/reviews">Reviews</a>
+                <a mat-fab extended href="restaurant/pollosHermanos">Info</a>
+            </div>
+        </section>
+    </section>
+    <br>
+
+    <section class="router">
+        <router-outlet></router-outlet> 
+    </section>
+
+    <br>
 </main>
