@@ -1,0 +1,58 @@
+.username {
+    width: 350px; // Define el ancho del campo de nombre de usuario 
+}
+
+.image {
+    width: 350px; // Define el ancho del campo de imagen 
+}
+
+.ubicacion {
+    width: 350px; // Define el ancho del campo de ubicación 
+}
+
+.biografia {
+    width: 350px; // Define el ancho del campo de biografía 
+    
+    textarea {
+        height: 100px; // Ajusta la altura del área de texto (biografía) 
+    }
+}
+
+html, body {
+    height: 100%; // Asegura que el HTML y el body ocupen todo el alto de la ventana 
+    margin: 0; // Elimina el margen predeterminado 
+}
+
+.main-container {
+    display: flex;
+    justify-content: center; // Centra el contenido horizontalmente 
+    align-items: center; // Centra el contenido verticalmente 
+    height: 100vh; // Establece la altura del contenedor para ocupar toda la pantalla 
+}
+
+.form-background {
+    display: flex;
+    flex-direction: column; // Organiza los elementos en una columna 
+    align-items: center; // Centra los elementos horizontalmente 
+    padding: 20px; // Añade un padding alrededor de los elementos del formulario 
+    background-color: #0f1928; // Color de fondo del formulario 
+    border-radius: 8px; // Bordes redondeados para el formulario 
+    width: 100%; // El formulario ocupa el 100% del ancho disponible 
+    max-width: 400px; // Ancho máximo del formulario 
+    margin: auto; // Centra el formulario en la página 
+}
+
+mat-form-field {
+    width: 100%; // Asegura que los campos del formulario ocupen todo el ancho disponible 
+    margin-bottom: 16px; // Espacio entre los campos del formulario 
+}
+
+.button-container {
+    display: flex; // Organiza los botones en una fila 
+    justify-content: space-between; // Alinea los botones a los extremos 
+    width: 88%; // Ajusta el ancho del contenedor de botones 
+}
+
+.button {
+    width: 48%; // Define un ancho igual para cada botón 
+}
