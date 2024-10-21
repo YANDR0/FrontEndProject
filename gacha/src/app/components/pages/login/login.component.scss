@@ -18,4 +18,14 @@ section {
     div {
         margin-bottom: 20px;
     }
+
+    a {
+        color: white;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
 }
