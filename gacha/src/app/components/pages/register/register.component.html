@@ -1,21 +1,28 @@
 <section>
-    <!--TODO Logic-->
-    <form>
+    <form [formGroup]="form" (submit)="signUp()" #signUpForm="ngForm">
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput type="text" name="email" required>
+            <input matInput type="email" name="email" formControlName="email">
+            <mat-error *ngIf="form.invalid">Must be a valid Email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput type="text" name="username" formControlName="username">
+            <mat-error *ngIf="form.invalid">Username must be at least 3 characters long</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password" name="password" required>
+            <input matInput type="password" name="password" formControlName="password">
+            <mat-error *ngIf="form.invalid">Username must be at least 8 characters long</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Repeat Password</mat-label>
-            <input matInput type="password" name="repeatPassword" required>
+            <input matInput type="password" name="confirmPassword" formControlName="confirmPassword">
+            <mat-error *ngIf="form.invalid">Username must be at least 8 characters long</mat-error>
         </mat-form-field>
+        <div>
+            <a (click)="navLogin()">Log in</a>
+        </div>
+        <button mat-flat-button [disabled]="form.invalid">Sign Up</button>
     </form>
-    <div>
-        <a href="/login">Log in</a>
-    </div>
-    <button mat-flat-button disabled>Sing Up</button>
 </section>

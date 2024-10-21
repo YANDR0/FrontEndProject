@@ -1,17 +1,18 @@
 <section>
-    <!--TODO Logic-->
-    <form>
+    <form [formGroup]="form" (submit)="login()" #signUpForm="ngForm">
         <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput type="text" name="name" required>
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="email" formControlName="email">
+            <mat-error *ngIf="form.invalid">Must be a valid Email</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password" name="password" required>
+            <input matInput type="password" name="password" formControlName="password">
+            <mat-error *ngIf="form.invalid">Username must be at least 8 characters long</mat-error>
         </mat-form-field>
+        <div>
+            <a (click)="navRegister()">Register</a>
+        </div>
+        <button mat-flat-button [disabled]="form.invalid">Sign Up</button>
     </form>
-    <div>
-        <a href="/register">Register</a>
-    </div>
-    <button mat-flat-button color="primary">Login</button>
 </section>
