@@ -29,10 +29,10 @@ export class RegisterComponent {
     return this.form.get('password')?.value === this.form.get('confirmPassword')?.value;
   }
 
-  signUp() {
+  register() {
     if (this.form.valid && this.passwordsMatch()) {
       console.log('Sign up successful');
-      //TODO - Add sign up logic
+      //TODO calls register service
       this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
     }
     else if (!this.passwordsMatch()) {

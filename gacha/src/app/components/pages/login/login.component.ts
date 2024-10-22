@@ -24,7 +24,7 @@ export class LoginComponent {
   login() {
     if (this.form.valid) {
       console.log('Login successful');
-      //TODO - Add login logic
+      //TODO calls login service
       this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
     }
     else {
