@@ -3,6 +3,9 @@ import { MaterialModule } from '../../../modules/material/material.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RegisterService } from '../../../services/register.service';
+import { Users } from '../../../types/users';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +19,7 @@ export class RegisterComponent {
 
   form: FormGroup;
 
-  constructor(formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute, private registerService: RegisterService, private authService: AuthService) {
     this.form = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -31,9 +34,26 @@ export class RegisterComponent {
 
   register() {
     if (this.form.valid && this.passwordsMatch()) {
-      console.log('Sign up successful');
-      //TODO calls register service
-      this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
+      const userData: Users = {
+        email: this.form.value.email,
+        name: this.form.value.username,
+        password: this.form.value.password,
+        role: 1
+      };
+
+      // Llama al servicio de registro
+      this.registerService.register(userData).subscribe({
+        next: (response) => {
+          console.log('ando en el next');
+          this.authService.saveToken(response.token); // Asegúrate de que el token se devuelva en la respuesta
+          this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
+        },
+        error: (error) => {
+          console.error('Error during registration:', error);
+          alert('Registration failed. Please try again.');
+          this.form.reset();
+        }
+      });
     }
     else if (!this.passwordsMatch()) {
       alert('Passwords do not match');
