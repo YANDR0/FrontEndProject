@@ -3,6 +3,12 @@
     <div class="spacer"></div>
     <a mat-button routerLink="home">Home</a>
     <a mat-button routerLink="search">Search</a>
-    <a mat-button routerLink="login">Login</a>
-    <a mat-raised-button color="accent" routerLink="login">Sign Up</a>
+    <ng-container *ngIf="isLoggedIn; else loginLinks">
+        <button mat-button (click)="logout()">Logout</button>
+        <a mat-button routerLink="user/config">Profile</a>
+    </ng-container>
+    <ng-template #loginLinks>
+        <a mat-button routerLink="login">Login</a>
+        <a mat-raised-button color="accent" routerLink="register">Sign Up</a>
+    </ng-template>
 </mat-toolbar>
