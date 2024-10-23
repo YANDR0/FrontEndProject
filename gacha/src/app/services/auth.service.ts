@@ -8,24 +8,25 @@ export class AuthService {
   tokenObservable: BehaviorSubject<string > = new BehaviorSubject('');
 
   constructor() {
-    // Comprobar si el token existe en el localStorage al iniciar el servicio
-    const token = localStorage.getItem('token');
+    // Comprobar si el token existe en el sessionStorage al iniciar el servicio
+    const token = sessionStorage.getItem('token');
     if (token) {
       this.saveToken(token); // Si existe, guarda el token en el observable
     }
   }
 
   saveToken(token: string) {
-    localStorage.setItem('token', token); // Guardar en localStorage
+    sessionStorage.setItem('token', token); // Guardar en sessionStorage
     this.tokenObservable.next(token);
   }
 
   deleteToken() {
-    localStorage.removeItem('token'); // Eliminar de localStorage
+    sessionStorage.removeItem('token'); // Eliminar de sessionStorage
+    sessionStorage.clear();
     this.tokenObservable.next('');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Retorna true si el token existe
+    return !!sessionStorage.getItem('token'); // Retorna true si el token existe
   }
 }
