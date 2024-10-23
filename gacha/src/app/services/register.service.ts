@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RegisterService {
 
   constructor(private httpService: HttpServiceService, private authService: AuthService) {
