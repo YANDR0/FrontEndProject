@@ -11,7 +11,7 @@ export class AuthService {
     // Comprobar si el token existe en el sessionStorage al iniciar el servicio
     const token = sessionStorage.getItem('token');
     if (token) {
-      this.saveToken(token); // Si existe, guarda el token en el observable
+      this.tokenObservable.next(token); // Si existe, guarda el token en el observable
     }
   }
 
@@ -23,10 +23,11 @@ export class AuthService {
   deleteToken() {
     sessionStorage.removeItem('token'); // Eliminar de sessionStorage
     sessionStorage.clear();
-    this.tokenObservable.next('');
+    this.tokenObservable.next(''); // Limpia el observable
   }
 
   isLoggedIn(): boolean {
-    return !!sessionStorage.getItem('token'); // Retorna true si el token existe
+    // Verificar si el token aún existe en sessionStorage
+    return !!sessionStorage.getItem('token');
   }
 }

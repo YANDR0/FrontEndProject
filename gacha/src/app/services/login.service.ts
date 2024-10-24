@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private httpService: HttpServiceService, private authService: AuthService) {
     //Login logic
-    this.authService.saveToken('token');
+    
   }
 
   login(userData: Users): Observable<any>{

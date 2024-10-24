@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -9,5 +10,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
-
+  constructor(private router: Router, private authService: AuthService) {
+    // Verifica si el usuario está logueado
+    if (!this.authService.isLoggedIn()) {
+      // Si no está logueado, redirige al login
+      this.router.navigate(['login']);
+    }
+  }
 }
