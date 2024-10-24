@@ -65,7 +65,7 @@ export class RegisterComponent {
     }
   }
 
-  navRegister() {
-    this.router.navigate(['../register'], { relativeTo: this.activatedRoute });
+  navLogin() {
+    this.router.navigate(['../login'], { relativeTo: this.activatedRoute });
   }
 }

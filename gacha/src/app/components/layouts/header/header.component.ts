@@ -23,6 +23,6 @@ export class HeaderComponent {
 
   logout() {
     this.authService.deleteToken(); // Eliminar el token
-    this.router.navigate(['login']); // Redirigir al usuario a la página de login
+    this.router.navigate(['home']); // Redirigir al usuario a la página de login
   }
 }

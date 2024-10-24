@@ -50,7 +50,7 @@ export class LoginComponent {
     }
   }
 
-  navLogin() {
-    this.router.navigate(['../login'], { relativeTo: this.activatedRoute });
+  navRegister() {
+    this.router.navigate(['../register'], { relativeTo: this.activatedRoute });
   }
 }
