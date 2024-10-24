@@ -11,5 +11,5 @@ import { MaterialModule } from '../../../../modules/material/material.module';
   styleUrl: './user-config.component.scss'
 })
 export class UserConfigComponent {
-
+  
 }

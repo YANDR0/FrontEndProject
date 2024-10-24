@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  tokenObservable: BehaviorSubject<string > = new BehaviorSubject('');
+  tokenObservable: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor() {
     // Comprobar si el token existe en el sessionStorage al iniciar el servicio
