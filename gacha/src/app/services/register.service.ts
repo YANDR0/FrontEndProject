@@ -12,7 +12,6 @@ export class RegisterService {
 
   constructor(private httpService: HttpServiceService, private authService: AuthService) {
     //Register logic
-    this.authService.saveToken('token');
   }
 
   register(userData: Users): Observable<any> {
