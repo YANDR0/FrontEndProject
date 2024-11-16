@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../../../modules/material/material.module';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../services/shared/auth.service';
 
 
 @Component({

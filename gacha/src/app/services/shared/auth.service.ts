@@ -15,6 +15,10 @@ export class AuthService {
     }
   }
 
+  getToken(){   //De mientras, creo que está mal y se debería obtener del observable
+    return sessionStorage.getItem('token') || '';
+  }
+
   saveToken(token: string) {
     sessionStorage.setItem('token', token); // Guardar en sessionStorage
     this.tokenObservable.next(token);
@@ -30,4 +34,5 @@ export class AuthService {
     // Verificar si el token aún existe en sessionStorage
     return !!sessionStorage.getItem('token');
   }
+
 }

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../../../services/register.service';
 import { Users } from '../../../types/users';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../services/shared/auth.service';
 
 @Component({
   selector: 'app-register',

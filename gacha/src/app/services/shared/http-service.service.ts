@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
 
-  generalUrl = 'http://localhost:3000/';
+  generalUrl = environment.SERVER_URL;
   constructor(private httpClient: HttpClient) {}
 
   getHttp(route: String){

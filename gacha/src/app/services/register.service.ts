@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpServiceService } from './http-service.service';
-import { AuthService } from './auth.service';
+import { HttpServiceService } from './shared/http-service.service';
+import { AuthService } from './shared/auth.service';
 import { Users } from '../types/users'; // Ajusta la ruta si es necesario
 import { Observable } from 'rxjs';
 
