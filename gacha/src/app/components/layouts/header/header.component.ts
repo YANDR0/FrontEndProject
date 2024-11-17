@@ -26,7 +26,6 @@ export class HeaderComponent {
         socketService.openConnection();
         socketService.joinRoom("0");  //Hacer que se una al chat de su rol después
         socketService.getMessage((data: any)=>{
-          console.log(data)
           this.msg = data;
         })
       }
@@ -54,7 +53,6 @@ export class HeaderComponent {
 
   sendMessage(room: string, globalMessage: string){
     if(!globalMessage) return
-    console.log(globalMessage)
     this.socketService.sendMessage(room, globalMessage);
     this.closeChat()
   }
