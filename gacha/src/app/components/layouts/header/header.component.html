@@ -1,30 +1,44 @@
+<!--Headers-->
 <mat-toolbar color="primary">
     <span>Gacha</span>
     <div class="spacer"></div>
+    <a mat-button (click)="showChat()">Notifications</a>
     <a mat-button routerLink="home">Home</a>
     <a mat-button routerLink="search">Search</a>
     <ng-container *ngIf="isLoggedIn; else loginLinks">
         <button mat-button (click)="logout()">Logout</button>
         <a mat-button routerLink="user/config">Profile</a>
     </ng-container>
-    <ng-template #loginLinks>
+    <ng-template #loginLinks> 
         <a mat-button routerLink="login">Login</a>
         <a mat-raised-button color="accent" routerLink="register">Sign Up</a>
     </ng-template>
 </mat-toolbar>
 
-@if(false){
+<!--Pop up notifications-->
+@if(msg){
     <div class="modal-backdrop">
         <div class="modal-content">
-            <p>Hola</p>
+            <p>{{msg}}</p>
+            <button mat-button (click)="closeNotification()">Close</button>
         </div>
     </div>
 }
 
-@if(false){
+<!--Pop up messages-->
+
+@if(show){
     <div class="modal-backdrop">
         <div class="modal-content">
-            <p>Hola</p>
+            <form>
+                <mat-form-field>
+                    <mat-label>Message</mat-label>
+                    <textarea #myTextarea matInput id="myTextArea"></textarea>
+                </mat-form-field>
+            </form>
+            <button mat-button (click)="sendMessage('0', myTextarea.value)">To Admins</button>
+            <button mat-button (click)="sendMessage('1', myTextarea.value)">To Users</button>
+            <button mat-button (click)="closeChat()">Close</button>
         </div>
     </div>
 }

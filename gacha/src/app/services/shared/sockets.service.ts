@@ -10,8 +10,14 @@ export class SocketsService {
   private socket: Socket | undefined;
   private server = environment.SERVER_URL;
 
-  constructor(private authService: AuthService) { 
-    this.socket = io(this.server, { auth: { token: authService.getToken() } }) 
+  constructor(private authService: AuthService) {}
+
+  openConnection(){
+    const token = this.authService.getToken();
+    console.log(this.server)
+    console.log(token)
+    if(!token) return
+    this.socket = io(this.server, { auth: { token } });
   }
 
   joinRoom(roomId: string){

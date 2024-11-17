@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/shared/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../modules/material/material.module';
 import { CommonModule } from '@angular/common';
+import { SocketsService } from '../../../services/shared/sockets.service';
 
 @Component({
   selector: 'app-header',
@@ -13,16 +14,47 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   isLoggedIn: boolean = false;
+  msg = "";
+  show = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private socketService: SocketsService, private router: Router) {
     // Suscribirse al observable para detectar cambios en el estado de autenticación
     this.authService.tokenObservable.subscribe(token => {
       this.isLoggedIn = !!token; // Actualizar estado basado en la presencia del token
+
+      if(this.isLoggedIn){
+        socketService.openConnection();
+        socketService.joinRoom("0");
+        socketService.getMessage((data: any)=>{
+          this.msg = data.msg;
+        })
+      }
+
     });
   }
 
   logout() {
     this.authService.deleteToken(); // Eliminar el token
+    this.socketService.closeConnection()
     this.router.navigate(['home']); // Redirigir al usuario a la página de login
+  }
+
+  closeNotification(){
+    this.msg = "";
+  }
+
+  showChat(){
+    this.show = true;
+  }
+
+  closeChat(){
+    this.show = false
+  }
+
+  sendMessage(room: string, globalMessage: string){
+    if(!globalMessage) return
+    console.log(globalMessage)
+    this.socketService.sendMessage(room, globalMessage);
+    this.closeChat()
   }
 }
