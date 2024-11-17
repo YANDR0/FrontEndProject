@@ -14,8 +14,6 @@ export class SocketsService {
 
   openConnection(){
     const token = this.authService.getToken();
-    console.log(this.server)
-    console.log(token)
     if(!token) return
     this.socket = io(this.server, { auth: { token } });
   }
@@ -27,7 +25,7 @@ export class SocketsService {
 
   getMessage(show: Function){
     if(!this.socket) return
-    this.socket.on('getMessage', (data) => show())
+    this.socket.on('getMessage', (data) => show(data))
   }
 
   sendMessage(room: string, msg: string){

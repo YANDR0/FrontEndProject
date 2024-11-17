@@ -24,9 +24,10 @@ export class HeaderComponent {
 
       if(this.isLoggedIn){
         socketService.openConnection();
-        socketService.joinRoom("0");
+        socketService.joinRoom("0");  //Hacer que se una al chat de su rol después
         socketService.getMessage((data: any)=>{
-          this.msg = data.msg;
+          console.log(data)
+          this.msg = data;
         })
       }
 
