@@ -46,6 +46,7 @@ export class RegisterComponent {
         next: (response) => {
           console.log('ando en el next');
           this.authService.saveToken(response.token); // Asegúrate de que el token se devuelva en la respuesta
+          this.authService.saveUser(response.user._doc); // Asegúrate de que el token se devuelva en la respuesta
           this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
         },
         error: (error) => {
