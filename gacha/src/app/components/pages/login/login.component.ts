@@ -34,7 +34,8 @@ export class LoginComponent {
       this.loginService.login(userData).subscribe({
         next: (response) => {
           console.log('Login successful');
-          this.authService.saveToken(response.token)
+          this.authService.saveToken(response.token);
+          this.authService.saveUser(response.user._doc);
           this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
         },
         error: (error) => {
