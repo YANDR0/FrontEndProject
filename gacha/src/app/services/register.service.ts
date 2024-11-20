@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpServiceService } from './shared/http-service.service';
+import { HttpService } from './shared/http-service';
 import { AuthService } from './shared/auth.service';
 import { Users } from '../types/users'; // Ajusta la ruta si es necesario
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class RegisterService {
 
-  constructor(private httpService: HttpServiceService, private authService: AuthService) {
+  constructor(private httpService: HttpService, private authService: AuthService) {
     //Register logic
   }
 

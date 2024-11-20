@@ -1,36 +1,52 @@
-
-main{
+main {
     margin: 16px 64px;
 }
 
-.search{
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+
+    mat-form-field {
+        width: 500px;
+    }
+}
+
+.search {
     text-align: center;
-    div{
+
+    div {
         margin: 10px;
         height: 80px;
+
         mat-slider {
             width: 300px;
-          }
+        }
     }
 }
 
 
-.results{
+.results {
     display: table;
     width: 100%;
-    > div{
+
+    >div {
         width: 25%;
         float: left;
-        mat-card{
+
+        mat-card {
             height: 250px;
-            overflow:hidden;
-            div{
+            overflow: hidden;
+
+            div {
                 height: 150px;
                 overflow: hidden;
-                img{
+
+                img {
                     width: 100%;
                 }
             }
+
             text-align: center;
             margin: 10px 20px;
         }
@@ -38,7 +54,7 @@ main{
     }
 }
 
-.results::after{
+.results::after {
     content: "";
     display: table;
     clear: both;
