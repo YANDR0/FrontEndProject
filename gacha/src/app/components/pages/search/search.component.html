@@ -1,28 +1,15 @@
-
 <section class="search">
+    <form class="search-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Restaurant</mat-label>
+            <mat-icon matSuffix>search</mat-icon>
+            <input matInput [(ngModel)]="search" (ngModelChange)="filterRestaurants()" name="search" />
+        </mat-form-field>
+    </form>
+
+
     <mat-tab-group>
-        <mat-tab label="Categoria"> 
-            <div>
-                <mat-form-field>
-                    <mat-label>Tipo</mat-label>
-                    <mat-select>
-                        <mat-option value="option1">Vegetariana</mat-option>
-                        <mat-option value="option2">Buffet</mat-option>
-                        <mat-option value="option3">Mariscos</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </mat-tab>
-        <mat-tab label="Horario"> 
-            <div> 
-                Hora inicio y fin 
-                <mat-slider min="0" max="24">
-                    <input value="13" matSliderStartThumb>
-                    <input value="18" matSliderEndThumb>
-                </mat-slider>
-            </div>
-        </mat-tab>
-        <mat-tab label="Ubicacion"> 
+        <mat-tab label="Rating">
             <div>
                 <mat-form-field>
                     <mat-label>Municipio</mat-label>
@@ -34,8 +21,29 @@
                 </mat-form-field>
             </div>
         </mat-tab>
-        <mat-tab label="Precios"> 
-            <div> 
+        <mat-tab label="Categoria">
+            <div>
+                <mat-form-field>
+                    <mat-label>Tipo</mat-label>
+                    <mat-select>
+                        <mat-option value="option1">Vegetariana</mat-option>
+                        <mat-option value="option2">Buffet</mat-option>
+                        <mat-option value="option3">Mariscos</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-tab>
+        <mat-tab label="Location">
+            <div>
+                Rango de precios
+                <mat-slider min="0" max="24">
+                    <input value="13" matSliderStartThumb>
+                    <input value="18" matSliderEndThumb>
+                </mat-slider>
+            </div>
+        </mat-tab>
+        <mat-tab label="Pricing">
+            <div>
                 Rango de precios
                 <mat-slider min="0" max="24">
                     <input value="13" matSliderStartThumb>
@@ -49,76 +57,35 @@
 
 <main>
     <section class="results">
+        <ng-container *ngIf="search; else noFilteredRestaurants">
+            <div *ngFor="let restaurant of filteredRestaurants;">
+                <mat-card appearance="outlined">
+                    <div>
+                        <img mat-card-image [src]="restaurant.image" alt="Photo of {{ restaurant.name }}">
+                    </div>
+                    <mat-card-header>{{ restaurant.name }}</mat-card-header>
+                    <mat-card-actions>
+                        <button mat-button>Más</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </ng-container>
 
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <ng-template #noFilteredRestaurants>
+            <ng-container>
+                <div *ngFor="let restaurant of restaurants;">
+                    <mat-card appearance="outlined">
+                        <div>
+                            <img mat-card-image [src]="restaurant.image" alt="Photo of {{ restaurant.name }}">
+                        </div>
+                        <mat-card-header>{{ restaurant.name }}</mat-card-header>
+                        <mat-card-actions>
+                            <button mat-button>Más</button>
+                        </mat-card-actions>
+                    </mat-card>
                 </div>
-                <mat-card-header>Karnes Garibaldi</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/card0.png" alt="Photo of a Shiba Inu">
-                </div>
-                <mat-card-header>Otro negocio</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                </div>
-                <mat-card-header>Karnes Garibaldi</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/card0.png" alt="Photo of a Shiba Inu">
-                </div>
-                <mat-card-header>Otro negocio</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                </div>
-                <mat-card-header>Karnes Garibaldi</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        <div>
-            <mat-card appearance="outlined">
-                <div>
-                    <img mat-card-image src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/card0.png" alt="Photo of a Shiba Inu">
-                </div>
-                <mat-card-header>Otro negocio</mat-card-header>
-                <mat-card-actions>
-                    <button mat-button>Más</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-        
-
-
+            </ng-container>
+        </ng-template>
     </section>
-    <br>
+
 </main>

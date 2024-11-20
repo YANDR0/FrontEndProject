@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { Users } from '../types/users';
 import { Observable } from 'rxjs';
-import { HttpServiceService } from './shared/http-service.service';
+import { HttpService } from './shared/http-service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,12 @@ import { HttpServiceService } from './shared/http-service.service';
 
 export class LoginService {
 
-  constructor(private httpService: HttpServiceService, private authService: AuthService) {
+  constructor(private httpService: HttpService, private authService: AuthService) {
     //Login logic
-    
+
   }
 
-  login(userData: Users): Observable<any>{
+  login(userData: Users): Observable<any> {
     return this.httpService.postHttp('session/login', userData)
   }
 }
