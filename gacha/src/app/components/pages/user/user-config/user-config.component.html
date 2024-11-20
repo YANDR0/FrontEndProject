@@ -1,45 +1,49 @@
 <body class="main-container">
     <!-- Contenedor principal de la página -->
     <section class="form-background">
-        <!-- Sección que contiene el formulario con un fondo de distinto color -->
-
-        <mat-form-field class="username">
-            <!-- Campo de texto para ingresar el nombre de usuario -->
-            <mat-label>Username</mat-label> <!-- Etiqueta para el campo de texto -->
-            <input matInput [(ngModel)]="user.name" placeholder="Nombre" />
-            <!-- Entrada de texto con valor vinculado a user.name -->
-        </mat-form-field>
-
-        <mat-form-field class="ubicacion">
-            <!-- Campo desplegable para seleccionar la ubicación -->
-            <mat-label>Ubicación</mat-label> <!-- Etiqueta para el campo de selección -->
-            <mat-select [(ngModel)]="user.location">
-                <mat-option value="one">Guadalajara, Jalisco</mat-option>
-                <mat-option value="two">Zapopan, Jalisco</mat-option>
-                <mat-option value="three">San Pedro Tlaquepaque, Jalisco</mat-option>
-                <mat-option value="four">Tlajomulco de Zúñiga, Jalisco</mat-option>
-                <mat-option value="five">Tonalá, Jalisco</mat-option>
-                <mat-option value="six">Ixtlahuacán de los Membrillos, Jalisco</mat-option>
-                <mat-option value="seven">Juanacatlán, Jalisco</mat-option>
-                <mat-option value="eight">El Salto, Jalisco</mat-option>
-                <mat-option value="nine">Zapotlanejo, Jalisco</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="biografia">
-            <!-- Campo de texto para ingresar la biografía del usuario -->
-            <mat-label>Biografía</mat-label> <!-- Etiqueta para el campo de texto -->
-            <textarea matInput [(ngModel)]="user.biography" placeholder="Biografía">{{ user.biography }}</textarea>
-        </mat-form-field>
-
-        <input type="file" id="fileInput" (change)="onFileSelected($event)" />
-
-        <section class="button-container">
-            <!-- Sección para los botones de acciones -->
-            <button mat-flat-button class="button" routerLink="..">Cancel</button>
-            <!-- Botón para cancelar, usando estilo plano -->
-            <button mat-stroked-button class="button" (click)="onConfirm()">Confirm</button>
-            <!-- Botón para confirmar, usando estilo contorneado -->
-        </section>
+      <!-- Sección que contiene el formulario con un fondo de distinto color -->
+  
+      <mat-form-field class="username">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="user.name" placeholder="Nombre" />
+      </mat-form-field>
+  
+      <mat-form-field class="ubicacion">
+        <mat-label>Ubicación</mat-label>
+        <mat-select [(ngModel)]="user.location">
+          <mat-option value="one">Guadalajara, Jalisco</mat-option>
+          <mat-option value="two">Zapopan, Jalisco</mat-option>
+          <mat-option value="three">San Pedro Tlaquepaque, Jalisco</mat-option>
+          <mat-option value="four">Tlajomulco de Zúñiga, Jalisco</mat-option>
+          <mat-option value="five">Tonalá, Jalisco</mat-option>
+          <mat-option value="six">Ixtlahuacán de los Membrillos, Jalisco</mat-option>
+          <mat-option value="seven">Juanacatlán, Jalisco</mat-option>
+          <mat-option value="eight">El Salto, Jalisco</mat-option>
+          <mat-option value="nine">Zapotlanejo, Jalisco</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field class="biografia">
+        <mat-label>Biografía</mat-label>
+        <textarea matInput [(ngModel)]="user.biography" placeholder="Biografía"></textarea>
+      </mat-form-field>
+  
+      <!-- Input de archivo oculto -->
+      <input
+        id="fileInput"
+        type="file"
+        class="hidden-input"
+        (change)="onFileSelected($event)"
+      />
+  
+      <!-- Botón Material para seleccionar archivo -->
+      <button mat-stroked-button class="button" (click)="triggerFileInput()">Seleccionar Archivo</button>
+      <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+  
+      <section class="button-container">
+        <button mat-flat-button class="button" routerLink="..">Cancel</button>
+        <button mat-stroked-button class="button" (click)="onConfirm()">Confirm</button>
+      </section>
     </section>
-</body>
+  </body>
+  

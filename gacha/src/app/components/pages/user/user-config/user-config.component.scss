@@ -18,6 +18,10 @@
     }
 }
 
+.image {
+    margin-bottom: 20px;
+}
+
 html, body {
     height: 100%; // Asegura que el HTML y el body ocupen todo el alto de la ventana 
     margin: 0; // Elimina el margen predeterminado 
@@ -56,3 +60,47 @@ mat-form-field {
 .button {
     width: 48%; // Define un ancho igual para cada botón 
 }
+
+.hidden-input {
+    display: none; // Oculta completamente el input de archivo
+  }
+  
+  .username,
+  .ubicacion,
+  .biografia {
+    width: 350px;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #0f1928;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+    margin-top: 15px;
+  }
+  
+  .button {
+    width: 48%;
+  }

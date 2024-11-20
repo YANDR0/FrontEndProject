@@ -4,11 +4,12 @@ import { MaterialModule } from '../../../../modules/material/material.module';
 import { UserService } from '../../../../services/user.service';
 import { Users } from '../../../../types/users';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-config',
   standalone: true,
-  imports: [RouterModule, MaterialModule, FormsModule],
+  imports: [RouterModule, MaterialModule, FormsModule, CommonModule],
   templateUrl: './user-config.component.html',
   styleUrls: ['./user-config.component.scss']
 })
@@ -36,17 +37,18 @@ export class UserConfigComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedFile = file;  // Asignamos el archivo seleccionado a la propiedad selectedFile
-    }
-  }
-  
   triggerFileInput(): void {
     document.getElementById('fileInput')?.click();
   }
-
+  
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      console.log('Archivo seleccionado:', file.name);
+    }
+  }
+  
   onConfirm(): void {
     const formData = new FormData();
   
