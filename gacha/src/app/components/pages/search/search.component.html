@@ -15,10 +15,11 @@
             <div>
                 <mat-form-field>
                     <mat-label>Tipo</mat-label>
-                    <mat-select>
-                        <mat-option value="option1">Vegetariana</mat-option>
-                        <mat-option value="option2">Buffet</mat-option>
-                        <mat-option value="option3">Mariscos</mat-option>
+                    <mat-select [(ngModel)] = "category">
+                        @for (cat of categories; track $index) {
+                            <mat-option value="{{cat.category}}">{{cat.category}}</mat-option>
+                        }
+                        <mat-option value="">Ninguno</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -27,11 +28,12 @@
             <div>
                 <mat-form-field>
                     <mat-label>Municipio</mat-label>
-                    <mat-select>
-                        <mat-option value="option1">Guadalajara</mat-option>
-                        <mat-option value="option2">Tlaquepaque</mat-option>
-                        <mat-option value="option3">Zapopan</mat-option>
-                        <mat-option value="option4">Tonala</mat-option>
+                    <mat-select [(ngModel)] = "ubication">
+                        <mat-option value="Guadalajara">Guadalajara</mat-option>
+                        <mat-option value="Tlaquepaque">Tlaquepaque</mat-option>
+                        <mat-option value="Zapopan">Zapopan</mat-option>
+                        <mat-option value="Tonala">Tonala</mat-option>
+                        <mat-option value="">Ninguno</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

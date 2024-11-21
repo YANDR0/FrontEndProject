@@ -7,6 +7,7 @@ import { RestaurantService } from '../../../services/shared/restaurant.service';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../../types/category';
 import { filter } from 'rxjs';
+import { CategoriesService } from '../../../services/shared/categories.service';
 
 @Component({
   selector: 'app-search',
@@ -30,7 +31,7 @@ export class SearchComponent implements OnInit {
   maxCost = 1000;
 
 
-  constructor(private router: Router, private authService: AuthService, private restaurantsService: RestaurantService) {
+  constructor(private router: Router, private authService: AuthService, private restaurantsService: RestaurantService, private categoriesService: CategoriesService) {
     // Verifica si el usuario está logueado
     if (!this.authService.isLoggedIn()) {
       // Si no está logueado, redirige al login
@@ -43,6 +44,10 @@ export class SearchComponent implements OnInit {
       this.restaurants = data;
       console.log(this.restaurants);
     });
+    this.categoriesService.getAllCategories().subscribe((data: Category[]) => {
+      this.categories = data;
+      console.log(this.categories)
+    })
     //this.categoriesService.
   }
 
@@ -58,6 +63,8 @@ export class SearchComponent implements OnInit {
 
   filterRestaurants() {
     this.search = true;
+
+    console.log(this.category, this.ubication);
 
     this.filteredRestaurants = this.restaurants.filter((r) => {
       let valid = true;
