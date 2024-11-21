@@ -1,4 +1,6 @@
 <section class="search">
+
+    <!--
     <form class="search-form">
         <mat-form-field class="example-full-width">
             <mat-label>Restaurant</mat-label>
@@ -6,21 +8,9 @@
             <input matInput [(ngModel)]="search" (ngModelChange)="filterRestaurants()" name="search" />
         </mat-form-field>
     </form>
-
+    -->
 
     <mat-tab-group>
-        <mat-tab label="Rating">
-            <div>
-                <mat-form-field>
-                    <mat-label>Municipio</mat-label>
-                    <mat-select>
-                        <mat-option value="option1">Guadalajara</mat-option>
-                        <mat-option value="option2">Tlaquepauqe</mat-option>
-                        <mat-option value="option3">Zapopan</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </mat-tab>
         <mat-tab label="Categoria">
             <div>
                 <mat-form-field>
@@ -33,25 +23,42 @@
                 </mat-form-field>
             </div>
         </mat-tab>
-        <mat-tab label="Location">
+        <mat-tab label="Ubicación">
             <div>
-                Rango de precios
-                <mat-slider min="0" max="24">
-                    <input value="13" matSliderStartThumb>
-                    <input value="18" matSliderEndThumb>
-                </mat-slider>
+                <mat-form-field>
+                    <mat-label>Municipio</mat-label>
+                    <mat-select>
+                        <mat-option value="option1">Guadalajara</mat-option>
+                        <mat-option value="option2">Tlaquepaque</mat-option>
+                        <mat-option value="option3">Zapopan</mat-option>
+                        <mat-option value="option4">Tonala</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </mat-tab>
-        <mat-tab label="Pricing">
+        <mat-tab label="Calificación">
             <div>
-                Rango de precios
-                <mat-slider min="0" max="24">
-                    <input value="13" matSliderStartThumb>
-                    <input value="18" matSliderEndThumb>
+                <mat-slider min="0" max="5">
+                    <input matSliderStartThumb [(ngModel)] = "minScore">
+                    <input matSliderEndThumb [(ngModel)] = "maxScore">
                 </mat-slider>
+                {{minScore}} - {{maxScore}} ★
+            </div>
+        </mat-tab>
+        <mat-tab label="Rango de precios">
+            <div>
+                <mat-slider min="0" max="1000">
+                    <input matSliderStartThumb [(ngModel)] = "minCost">
+                    <input matSliderEndThumb [(ngModel)] = "maxCost">
+                </mat-slider>
+                ${{minCost}} - ${{maxCost}}
             </div>
         </mat-tab>
     </mat-tab-group>
+    <div>
+        <button mat-flat-button (click)="filterRestaurants()">Aplicar filtros</button>
+        <button mat-stroked-button (click)="resetValues()">Reiniciar</button>
+    </div>
 </section>
 
 

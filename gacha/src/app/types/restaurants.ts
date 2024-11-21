@@ -3,9 +3,9 @@ export interface Restaurants {
     name: string;
     rating: number;
     description: string;
+    image: string;
     category: string[];
     location: string;
-    menu: string;
-    image: string;
+    price: number;
     __v: number;
 }

@@ -5,6 +5,8 @@ import { AuthService } from '../../../services/shared/auth.service';
 import { Restaurants } from '../../../types/restaurants';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
 import { CommonModule } from '@angular/common';
+import { Category } from '../../../types/category';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -15,9 +17,18 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchComponent implements OnInit {
 
+  categories: Category[] = [];
   restaurants: Restaurants[] = [];
   filteredRestaurants: Restaurants[] = [];
-  search: string = '';
+  search = false;
+
+  category = "";
+  ubication = "";
+  minScore = 0;
+  maxScore = 5;
+  minCost = 0;
+  maxCost = 1000;
+
 
   constructor(private router: Router, private authService: AuthService, private restaurantsService: RestaurantService) {
     // Verifica si el usuario está logueado
@@ -32,12 +43,32 @@ export class SearchComponent implements OnInit {
       this.restaurants = data;
       console.log(this.restaurants);
     });
+    //this.categoriesService.
+  }
 
+  resetValues(){
+    this.search = false;
+    this.category = "";
+    this.ubication = "";
+    this.minScore = 0;
+    this.maxScore = 5;
+    this.minCost = 0;
+    this.maxCost = 1000;
   }
 
   filterRestaurants() {
-    this.filteredRestaurants = this.restaurants.filter((restaurant) => {
-      return restaurant.name.toLowerCase().includes(this.search.toLowerCase());
+    this.search = true;
+
+    this.filteredRestaurants = this.restaurants.filter((r) => {
+      let valid = true;
+      if(this.ubication)
+        valid &&= r.location.toLowerCase().includes(this.ubication.toLowerCase())
+
+      if(this.category)
+        valid &&= r.name.toLowerCase().includes(this.category.toLowerCase());
+
+      return valid && (r.rating <= this.maxScore && r.rating >= this.minScore) && (r.price <= this.maxCost && r.price >= this.minCost);
     });
+    
   }
 }
