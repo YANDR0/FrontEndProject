@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../../../modules/material/material.module';
 import { AuthService } from '../../../services/shared/auth.service';
+import { Restaurants } from '../../../types/restaurants';
+import { RestaurantService } from '../../../services/shared/restaurant.service';
 
 
 @Component({
@@ -11,12 +13,36 @@ import { AuthService } from '../../../services/shared/auth.service';
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
-export class RestaurantComponent { 
-  constructor(private router: Router, private authService: AuthService) {
+export class RestaurantComponent implements OnInit { 
+
+  id: string = "";
+  restaurant: Restaurants|undefined; 
+  stars = "";
+
+  constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService) {
     // Verifica si el usuario está logueado
     if (!this.authService.isLoggedIn()) {
       // Si no está logueado, redirige al login
       this.router.navigate(['login']); 
     }
   }
+
+  ngOnInit() {
+    this.id = this.restaurantService.getUrlId()
+
+    this.restaurantService.getRestaurantData(this.id).subscribe(
+      (data: Restaurants) => {
+        if(!data) this.router.navigate(['not-found']); 
+        this.restaurant = data;
+        console.log(this.restaurant)
+        this.stars = "★".repeat(this.restaurant.rating) + "☆".repeat(5 - this.restaurant.rating);
+      },
+      (err) => {
+        this.restaurant = undefined;
+        this.router.navigate(['not-found']); 
+      }
+    )
+  }
+
+  
 }

@@ -1,26 +1,24 @@
 <section class="Carrusel">
-    <img src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/pollos.png" alt="Carrusel">
+    <img src="{{restaurant?.image}}" alt="Carrusel">
 </section>
 
 <main>
     <section>
-        <h1>Pollos hermanos</h1>
-        <section  class="Portada">
+        <h1>{{restaurant?.name}}</h1>
+        <section class="Portada">
             <div class="Rating">
-                <div><mat-card><mat-card-title>Calificación: 4/5 ★★★★☆</mat-card-title></mat-card></div>
+                <div><mat-card><mat-card-title>Calificación: {{restaurant?.rating}}/5 {{stars}}</mat-card-title></mat-card></div>
             </div>
             <div>
-                <a mat-fab extended routerLink="">Menú</a>
-                <a mat-fab extended routerLink="restaurant/pollosHermanos/reviews">Reviews</a>
-                <a mat-fab extended routerLink="restaurant/pollosHermanos">Info</a>
+                <!--<a mat-fab extended routerLink="">Menú</a>-->
+                <a mat-fab extended routerLink="restaurant/67072d4508a391dbb206fa10/reviews">Reviews</a>
+                <a mat-fab extended routerLink="restaurant/67072d4508a391dbb206fa10">Info</a>
             </div>
         </section>
     </section>
     <br>
-
     <section class="router">
         <router-outlet></router-outlet> 
     </section>
-
     <br>
 </main>

@@ -3,27 +3,34 @@
         <div>
             <h1>Descripcion</h1>
             <mat-card appearance="outlined"><mat-card-content>
-                Hello! And welcome to the Los Pollos Hermanos family. My name is Gustavo, but you can call me "Gus". I am thrilled that you'll be joining our team. Each and every day, we serve our customers exceptional food, with impecable service. We take pride in everything that we do. And after this week's online seminar, I'm sure you'll fit right in. I like to think I see things in people. To begin, I'd like to talk about the cornerstone of the Los Pollos Hermanos brand.
+                {{restaurant?.description}}
             </mat-card-content></mat-card>
         </div>
-        <div class="map"><img src="https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/mapa.png" alt="Mapa"></div>
     </section>
     <div class="data">
         <h1>Datos generales</h1>
         <mat-card appearance="outlined">
             <mat-card-content>
+                @if(restaurant?.category){
                 <div><p>Categorias:
-                    <mat-chip>Pollo</mat-chip>
-                    <mat-chip>Familiar</mat-chip>
-                    <mat-chip>Económico</mat-chip>
-                    <mat-chip>Para llevar</mat-chip>
+                    @for (cat of restaurant?.category; track $index) {
+                        <mat-chip>{{cat}}</mat-chip>
+                    }
                 </p></div>
+                }
+                <!--
                 <div><p>Horario: <mat-chip>11:00 - 22:00</mat-chip></p></div>
-                <div><p>Rango de precios: <mat-chip>$200 - $500</mat-chip></p></div>
+                -->
+                @if (restaurant?.price) {
+                    <div><p>Precio aproximado: <mat-chip>{{restaurant?.price}}</mat-chip></p></div>
+                }
+                
             </mat-card-content>
         </mat-card>
     </div>
     <br>
+
+    <!--
     <section>
         <h1>Noticias y promociones</h1>
         <section class="news">
@@ -46,6 +53,7 @@
 
         </section>
     </section>
+    -->
 </section>
 
 

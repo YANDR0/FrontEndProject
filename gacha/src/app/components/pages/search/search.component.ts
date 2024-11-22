@@ -68,13 +68,13 @@ export class SearchComponent implements OnInit {
 
     this.filteredRestaurants = this.restaurants.filter((r) => {
       let valid = true;
-      if(this.ubication)
-        valid &&= r.location.toLowerCase().includes(this.ubication.toLowerCase())
+      
+      if(this.ubication) valid &&= r.location == this.ubication.toLowerCase()
+      if(this.category) valid &&= r.category.includes(this.category);
+      valid &&= (r.rating <= this.maxScore && r.rating >= this.minScore); 
+      /*valid &&= (r.price <= this.maxCost && r.price >= this.minCost);*/
 
-      if(this.category)
-        valid &&= r.name.toLowerCase().includes(this.category.toLowerCase());
-
-      return valid && (r.rating <= this.maxScore && r.rating >= this.minScore) && (r.price <= this.maxCost && r.price >= this.minCost);
+      return valid;
     });
     
   }
