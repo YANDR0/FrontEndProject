@@ -71,8 +71,10 @@ export class SearchComponent implements OnInit {
       
       if(this.ubication) valid &&= r.location == this.ubication.toLowerCase()
       if(this.category) valid &&= r.category.includes(this.category);
-      valid &&= (r.rating <= this.maxScore && r.rating >= this.minScore); 
-      /*valid &&= (r.price <= this.maxCost && r.price >= this.minCost);*/
+      if(this.maxScore != 5 || this.minScore != 0)
+        valid &&= (r.rating <= this.maxScore && r.rating >= this.minScore); 
+      if(this.maxCost != 1000 || this.minCost != 0)
+        valid &&= (r.price <= this.maxCost && r.price >= this.minCost); 
 
       return valid;
     });
