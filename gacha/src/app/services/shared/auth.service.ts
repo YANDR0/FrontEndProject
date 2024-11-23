@@ -8,6 +8,7 @@ import { Users } from '../../types/users';
 export class AuthService {
   tokenObservable: BehaviorSubject<string> = new BehaviorSubject('');
   userObservable: BehaviorSubject<string> = new BehaviorSubject('');
+  currUser : Users|undefined;
 
   constructor() {
     // Comprobar si el token existe en el sessionStorage al iniciar el servicio
