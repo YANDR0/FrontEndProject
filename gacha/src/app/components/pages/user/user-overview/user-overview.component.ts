@@ -14,6 +14,15 @@ import { UserService } from '../../../../services/user.service';
 export class UserOverviewComponent implements OnInit {
   user: Users | null = null;
 
+  // Mapa para traducir el ID de ubicación a texto
+  locationMap: { [key: number]: string } = {
+    0: 'Guadalajara, Jalisco',
+    1: 'Zapopan, Jalisco',
+    2: 'San Pedro Tlaquepaque, Jalisco',
+    3: 'Tlajomulco de Zúñiga, Jalisco',
+    4: 'Tonalá, Jalisco',
+  };
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
@@ -27,4 +36,12 @@ export class UserOverviewComponent implements OnInit {
       console.error('No se encontró el usuario en sessionStorage');
     }
   }
+
+  getLocationText(locationId?: number): string {
+    if (locationId == null) {
+      return 'Ubicación no especificada';
+    }
+    return this.locationMap[locationId] || 'Ubicación no especificada';
+  }
+  
 }
