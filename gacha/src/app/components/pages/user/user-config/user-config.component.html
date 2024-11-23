@@ -11,17 +11,13 @@
       <mat-form-field class="ubicacion">
         <mat-label>Ubicación</mat-label>
         <mat-select [(ngModel)]="user.location">
-          <mat-option value="one">Guadalajara, Jalisco</mat-option>
-          <mat-option value="two">Zapopan, Jalisco</mat-option>
-          <mat-option value="three">San Pedro Tlaquepaque, Jalisco</mat-option>
-          <mat-option value="four">Tlajomulco de Zúñiga, Jalisco</mat-option>
-          <mat-option value="five">Tonalá, Jalisco</mat-option>
-          <mat-option value="six">Ixtlahuacán de los Membrillos, Jalisco</mat-option>
-          <mat-option value="seven">Juanacatlán, Jalisco</mat-option>
-          <mat-option value="eight">El Salto, Jalisco</mat-option>
-          <mat-option value="nine">Zapotlanejo, Jalisco</mat-option>
+          <mat-option [value]="0">Guadalajara, Jalisco</mat-option>
+          <mat-option [value]="1">Zapopan, Jalisco</mat-option>
+          <mat-option [value]="2">San Pedro Tlaquepaque, Jalisco</mat-option>
+          <mat-option [value]="3">Tlajomulco de Zúñiga, Jalisco</mat-option>
+          <mat-option [value]="4">Tonalá, Jalisco</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field>      
   
       <mat-form-field class="biografia">
         <mat-label>Biografía</mat-label>

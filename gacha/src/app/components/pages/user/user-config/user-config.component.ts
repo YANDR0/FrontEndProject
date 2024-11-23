@@ -19,7 +19,7 @@ export class UserConfigComponent implements OnInit {
   user: Users = {
     name: '',
     email: '',
-    location: '',
+    location: 0,
     biography: '',
     image: '',
   };
@@ -33,9 +33,13 @@ export class UserConfigComponent implements OnInit {
   loadUserData(): void {
     const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
-      this.user = JSON.parse(storedUser);
+      const parsedUser = JSON.parse(storedUser);
+      parsedUser.location = +parsedUser.location; // Asegúrate de que sea un número
+      this.user = parsedUser;
+      console.log('Ubicación cargada:', this.user.location); // Depuración
     }
   }
+  
 
   triggerFileInput(): void {
     document.getElementById('fileInput')?.click();
@@ -59,17 +63,17 @@ export class UserConfigComponent implements OnInit {
     if (this.user.email) {
       formData.append('updatedData[email]', this.user.email);
     }
-    if (this.user.location) {
-      formData.append('updatedData[location]', this.user.location);
+    if (this.user.location !== null && this.user.location !== undefined) {
+      formData.append('updatedData[location]', this.user.location.toString());
     }
     if (this.user.biography) {
       formData.append('updatedData[biography]', this.user.biography);
     }
   
     // Si se seleccionó un archivo, agrégalo al FormData con la clave "file"
-  if (this.selectedFile) {
-    formData.append('file', this.selectedFile, this.selectedFile.name); // Cambia 'file' por la clave esperada en tu backend
-  }
+    if (this.selectedFile) {
+      formData.append('file', this.selectedFile, this.selectedFile.name); 
+    }
   
     // Enviar los datos al backend
     this.userService.updateUserData(formData).subscribe({
@@ -81,7 +85,7 @@ export class UserConfigComponent implements OnInit {
   
         // Opcional: Actualizar el modelo del usuario en el componente
         this.user = updatedUser;
-
+  
         // Redirigir al perfil después de confirmar
         this.router.navigate(['..'], { relativeTo: this.activatedRoute });
       },
@@ -89,7 +93,5 @@ export class UserConfigComponent implements OnInit {
         console.error('Error al actualizar los datos del usuario:', error);
       },
     });
-  }
-  
-
+  }  
 }
