@@ -18,4 +18,8 @@ export class LoginService {
   login(userData: Users): Observable<any>{
     return this.httpService.postHttp('session/login', userData)
   }
+
+  loginGoogle(): Observable<any>{
+    return this.httpService.getHttp('session/google')
+  }
 }
