@@ -1,18 +1,40 @@
-
 .small-image {
     background-size: cover;
 }
 
+#starSelector {
+    font-size: 40px;
+}
 
-mat-card{
+#starSelector:hover {
+    cursor: pointer;
+}
+
+#formButton {
+    margin-top: 10px;
+}
+
+
+section:first-child {
+    margin-bottom: 75px;
+}
+
+mat-card {
     margin: 15px 0px;
-    mat-card-header{
+
+    mat-card-content {
+        h2 {
+            text-align: center;
+        }
+    }
+
+    mat-card-header {
         border-radius: 11px;
-        background-color:rgb(121, 73, 28);
+        background-color: rgb(121, 73, 28);
         margin-bottom: 10px;
     }
 }
 
-mat-form-field{
+mat-form-field {
     width: 100%;
 }

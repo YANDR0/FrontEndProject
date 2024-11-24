@@ -7,18 +7,19 @@
         <h1>{{restaurant?.name}}</h1>
         <section class="Portada">
             <div class="Rating">
-                <div><mat-card><mat-card-title>Calificación: {{restaurant?.rating}}/5 {{stars}}</mat-card-title></mat-card></div>
+                <div><mat-card><mat-card-title>Calificación: {{restaurant?.rating}}/5
+                            {{stars}}</mat-card-title></mat-card></div>
             </div>
             <div>
                 <!--<a mat-fab extended routerLink="">Menú</a>-->
-                <a mat-fab extended routerLink="home">Reviews</a>
-                <a mat-fab extended routerLink="restaurant/67072d4508a391dbb206fa10">Info</a>
+                <a mat-fab extended routerLink="reviews">Reviews</a>
+                <a mat-fab extended routerLink="../{{id}}">Info</a>
             </div>
         </section>
     </section>
     <br>
     <section class="router">
-        <router-outlet></router-outlet> 
+        <router-outlet></router-outlet>
     </section>
     <br>
 </main>

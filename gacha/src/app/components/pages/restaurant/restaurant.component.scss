@@ -1,14 +1,15 @@
-main{
+main {
     margin: 16px 64px;
 }
 
-.router{
+.router {
     margin: 0px 80px;
 }
 
-.Carrusel{
-    background-color:black;
-    img{
+.Carrusel {
+    background-color: black;
+
+    img {
         height: 360px;
         margin-left: auto;
         margin-right: auto;
@@ -16,21 +17,23 @@ main{
     }
 }
 
-h1{
+h1 {
     font-size: 50px;
 }
 
-.Portada{
-    .Rating{
+.Portada {
+    .Rating {
         width: 50%;
         float: left;
+
         * {
             height: 100%;
             padding: 6px 25px;
             width: fit-content;
         }
     }
-    > div {
+
+    >div {
         a {
             margin: 10px;
             text-align: right;
@@ -39,7 +42,7 @@ h1{
     }
 }
 
-.Portada::after{
+.Portada::after {
     content: "";
     display: table;
     clear: both;

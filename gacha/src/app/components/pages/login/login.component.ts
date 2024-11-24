@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import { Users } from '../../../types/users';
 import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../../services/shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -37,8 +39,11 @@ export class LoginComponent {
       };
 
       this.loginService.login(userData).subscribe({
-        next: () => {
+        next: (response) => {
           console.log('Login successful');
+          console.log('Response:', response);
+          this.authService.saveToken(response.token); // Asegúrate de que el token se devuelva en la respuesta
+          this.authService.saveUser(response.user._doc); // Asegúrate de que el token se devuelva en la respuesta
           this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
         },
         error: (error) => {
