@@ -2,7 +2,9 @@
 <mat-toolbar color="primary">
     <span>Gacha</span>
     <div class="spacer"></div>
-    <a mat-button (click)="showChat()">Notifications</a>
+    @if(role == 0){
+        <a mat-button (click)="showChat()">Notifications</a>
+    }
     <a mat-button routerLink="home">Home</a>
     <a mat-button routerLink="search">Search</a>
     <ng-container *ngIf="isLoggedIn; else loginLinks">

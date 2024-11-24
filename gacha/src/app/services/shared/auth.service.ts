@@ -8,7 +8,8 @@ import { Users } from '../../types/users';
 export class AuthService {
   tokenObservable: BehaviorSubject<string> = new BehaviorSubject('');
   userObservable: BehaviorSubject<string> = new BehaviorSubject('');
-  currUser : Users|undefined;
+  currUser: Users|undefined;
+  currToken: string|undefined;
 
   constructor() {
     // Comprobar si el token existe en el sessionStorage al iniciar el servicio
@@ -31,20 +32,28 @@ export class AuthService {
   }
 
   saveToken(token: string) {
+    this.currToken = token;
     sessionStorage.setItem('token', token); // Guardar en sessionStorage
     this.tokenObservable.next(token);
   }
 
   saveUser(user: Users) {
-    const strUser = JSON.stringify(user)
+    this.currUser = user;
+    const strUser = JSON.stringify(user);
     sessionStorage.setItem('user', strUser); // Guardar en sessionStorage
     this.userObservable.next(strUser);
   }
 
   deleteToken() {
+    this.currToken = undefined;
     sessionStorage.removeItem('token'); // Eliminar de sessionStorage
     sessionStorage.clear();
     this.tokenObservable.next(''); // Limpia el observable
+  }
+
+  getRole(){
+    const role = this.currUser?.role;
+    return role;
   }
 
   isLoggedIn(): boolean {

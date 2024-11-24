@@ -16,18 +16,24 @@ export class HeaderComponent {
   isLoggedIn: boolean = false;
   msg = "";
   show = false;
+  role: number|undefined;
 
   constructor(private authService: AuthService, private socketService: SocketsService, private router: Router) {
     // Suscribirse al observable para detectar cambios en el estado de autenticación
     this.authService.tokenObservable.subscribe(token => {
       this.isLoggedIn = !!token; // Actualizar estado basado en la presencia del token
-
+      
       if(this.isLoggedIn){
         socketService.openConnection();
-        socketService.joinRoom("0");  //Hacer que se una al chat de su rol después
-        socketService.getMessage((data: any)=>{
-          this.msg = data;
+        this.authService.userObservable.subscribe(user => {
+          this.role = authService.getRole();
+          console.log(this.role + '')
+          socketService.joinRoom(this.role + '');  //Hacer que se una al chat de su rol después
+          socketService.getMessage((data: any)=>{
+            this.msg = data;
+          })
         })
+        
       }
 
     });
