@@ -75,6 +75,8 @@ export class UserConfigComponent implements OnInit {
       formData.append('file', this.selectedFile, this.selectedFile.name); 
     }
   
+    console.log("Datos: ", formData);
+
     // Enviar los datos al backend
     this.userService.updateUserData(formData).subscribe({
       next: (updatedUser) => {

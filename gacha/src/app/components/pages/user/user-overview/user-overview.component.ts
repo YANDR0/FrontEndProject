@@ -16,11 +16,11 @@ export class UserOverviewComponent implements OnInit {
 
   // Mapa para traducir el ID de ubicación a texto
   locationMap: { [key: number]: string } = {
-    0: 'Guadalajara, Jalisco',
-    1: 'Zapopan, Jalisco',
-    2: 'San Pedro Tlaquepaque, Jalisco',
-    3: 'Tlajomulco de Zúñiga, Jalisco',
-    4: 'Tonalá, Jalisco',
+    1: 'Guadalajara, Jalisco',
+    2: 'Zapopan, Jalisco',
+    3: 'San Pedro Tlaquepaque, Jalisco',
+    4: 'Tlajomulco de Zúñiga, Jalisco',
+    5: 'Tonalá, Jalisco',
   };
 
   constructor(private userService: UserService) {}

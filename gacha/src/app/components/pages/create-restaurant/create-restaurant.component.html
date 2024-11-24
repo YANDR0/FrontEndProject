@@ -1,49 +1,65 @@
-<section>
-    <h1>Create a Restaurant</h1>
-    <div class="requiredFields">
-        <!--TODO add validations-->
-        <form>
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput type="text" name="name" required>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Location</mat-label>
-                <input matInput type="text" name="location" required>
-            </mat-form-field>
-            <mat-form-field>
-                <!--TODO How to upload files-->
-                <mat-label>Logo</mat-label>
-                <input matInput name="logo" required>
-            </mat-form-field>
-            <mat-form-field>
-                <!--TODO How to upload files-->
-                <mat-label>Menu</mat-label>
-                <input matInput name="menu" required>
-            </mat-form-field>
-        </form>
-    </div>
-    <div class="optionalFields">
-        <!--TODO Add and modify fields base on model-->
-        <form>
-            <mat-form-field>
-                <mat-label>Phone</mat-label>
-                <input matInput type="text" name="phone">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Website</mat-label>
-                <input matInput type="text" name="website">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Opening Hours</mat-label>
-                <input matInput type="text" name="openingHours">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Closing Hours</mat-label>
-                <input matInput type="text" name="closingHours">
-            </mat-form-field>
-        </form>
-    </div>
-    <button mat-flat-button class="accepted">Create</button>
-    <button mat-flat-button class="cancelled">Cancel</button>
-</section>
+<body class="main-container">
+    <!-- Contenedor principal del formulario -->
+    <section class="form-background">
+      <!-- Campo de nombre -->
+      <mat-form-field class="name">
+        <mat-label>Restaurant Name</mat-label>
+        <input matInput [(ngModel)]="restaurant.name" placeholder="Enter the name of the restaurant" />
+      </mat-form-field>
+  
+      <!-- Campo de ubicación -->
+      <mat-form-field class="location">
+        <mat-label>Location</mat-label>
+        <mat-select [(ngModel)]="restaurant.location">
+          <mat-option [value]="1">Guadalajara, Jalisco</mat-option>
+          <mat-option [value]="2">Zapopan, Jalisco</mat-option>
+          <mat-option [value]="3">San Pedro Tlaquepaque, Jalisco</mat-option>
+          <mat-option [value]="4">Tlajomulco de Zúñiga, Jalisco</mat-option>
+          <mat-option [value]="5">Tonalá, Jalisco</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Campo de descripción -->
+      <mat-form-field class="description">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="restaurant.description" placeholder="Enter a brief description"></textarea>
+      </mat-form-field>
+  
+      <!-- Campo de calificación -->
+      <mat-form-field class="rating">
+        <mat-label>Average Rating</mat-label>
+        <input matInput type="number" [(ngModel)]="restaurant.rating" placeholder="Enter the rating (0-5)" />
+      </mat-form-field>
+  
+      <!-- Campo de precio -->
+      <mat-form-field class="price">
+        <mat-label>Average Price</mat-label>
+        <input matInput type="number" [(ngModel)]="restaurant.price" placeholder="Enter the average price" />
+      </mat-form-field>
+  
+      <!-- Campo de categoría -->
+      <mat-form-field class="category">
+        <mat-label>Category</mat-label>
+        <input matInput [(ngModel)]="restaurant.category" placeholder="Enter the category" />
+      </mat-form-field>
+  
+      <!-- Input de archivo para imagen -->
+      <input
+        id="fileInput"
+        type="file"
+        class="hidden-input"
+        (change)="onFileSelected($event)"
+      />
+  
+      <!-- Botón para seleccionar archivo -->
+      <button mat-stroked-button class="button" (click)="triggerFileInput()">Select Image</button>
+      <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+  
+      <!-- Botones de acción -->
+      <section class="button-container">
+        <button mat-flat-button class="button" routerLink="..">Cancel</button>
+        <button mat-stroked-button class="button" (click)="onConfirm()">Confirm</button>
+      </section>
+    </section>
+  </body>
+  

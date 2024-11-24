@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http-service';
 import { Restaurants } from '../../types/restaurants';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ import { Router } from '@angular/router';
 export class RestaurantService {
 
   constructor(private httpService: HttpService, private router: Router) { }
+
+  createRestaurant(data: FormData): Observable<Restaurants> {
+    return this.httpService.postHttpAuth('restaurant', data); // Ajusta la ruta según tu backend
+  }
 
   getAllRestaurants() {
     return this.httpService.getHttp('restaurant');
