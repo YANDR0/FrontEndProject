@@ -14,6 +14,7 @@
                 <!--<a mat-fab extended routerLink="">Menú</a>-->
                 <a mat-fab extended routerLink="reviews">Reviews</a>
                 <a mat-fab extended routerLink="../{{id}}">Info</a>
+                <a mat-fab extended (click)="show=true">Add to list</a>
             </div>
         </section>
     </section>
@@ -23,3 +24,21 @@
     </section>
     <br>
 </main>
+
+
+@if(show){
+    <div class="modal-backdrop">
+        <div class="modal-content">
+            <p>Añadir {{restaurant?.name}} a tu lista</p>
+            <p>
+                <b> Score: </b> 
+                <button mat-button (click)="modifyScore(-0.5)">-</button>
+                {{score}}
+                <button mat-button (click)="modifyScore(0.5)">+</button>
+            </p>
+
+            <button mat-button (click)="listConfirm()">Confirm</button>
+            <button mat-button (click)="show=false">Close</button>
+        </div>
+    </div>
+}
