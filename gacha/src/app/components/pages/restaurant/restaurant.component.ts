@@ -4,6 +4,7 @@ import { MaterialModule } from '../../../modules/material/material.module';
 import { AuthService } from '../../../services/shared/auth.service';
 import { Restaurants } from '../../../types/restaurants';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
+import { ListsService } from '../../../services/lists.service';
 
 
 @Component({
@@ -18,8 +19,10 @@ export class RestaurantComponent implements OnInit {
   id: string = "";
   restaurant: Restaurants | undefined;
   stars = "";
+  show = false;
+  score = 6;
 
-  constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService) {
+  constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService, private listService: ListsService) {
     // Verifica si el usuario está logueado
     if (!this.authService.isLoggedIn()) {
       // Si no está logueado, redirige al login
@@ -29,8 +32,6 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.restaurantService.getUrlId()
-
-
     this.restaurantService.getRestaurantData(this.id).subscribe(
       (data: Restaurants) => {
         if (!data) this.router.navigate(['not-found']);
@@ -43,5 +44,21 @@ export class RestaurantComponent implements OnInit {
         this.router.navigate(['not-found']);
       }
     )
+  }
+
+
+  modifyScore(plus: number){
+    if(this.score == 10 && plus > 0) return
+    if(this.score == 0 && plus < 0) return
+    this.score += plus;
+  }
+
+
+  listConfirm(){
+
+    this.listService.createElement(this.authService.getUserId() + '', this.restaurant?._id + '', this.score).subscribe(() => {
+      this.show = false;
+    })
+    
   }
 }

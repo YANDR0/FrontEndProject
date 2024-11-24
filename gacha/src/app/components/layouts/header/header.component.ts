@@ -27,7 +27,6 @@ export class HeaderComponent {
         socketService.openConnection();
         this.authService.userObservable.subscribe(user => {
           this.role = authService.getRole();
-          console.log(this.role + '')
           socketService.joinRoom(this.role + '');  //Hacer que se una al chat de su rol después
           socketService.getMessage((data: any)=>{
             this.msg = data;

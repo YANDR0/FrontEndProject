@@ -32,16 +32,17 @@ export class AuthService {
   }
 
   saveToken(token: string) {
-    this.currToken = token;
     sessionStorage.setItem('token', token); // Guardar en sessionStorage
+    this.currToken = token;
     this.tokenObservable.next(token);
   }
 
   saveUser(user: Users) {
-    this.currUser = user;
     const strUser = JSON.stringify(user);
     sessionStorage.setItem('user', strUser); // Guardar en sessionStorage
+    this.currUser = user;
     this.userObservable.next(strUser);
+    console.log(user, this.currUser);
   }
 
   deleteToken() {
@@ -52,7 +53,14 @@ export class AuthService {
   }
 
   getRole(){
-    const role = this.currUser?.role;
+    const user:Users = JSON.parse(this.getUser());
+    const role = user.role;
+    return role;
+  }
+
+  getUserId(){
+    const user:Users = JSON.parse(this.getUser());
+    const role = user._id;
     return role;
   }
 
