@@ -1,48 +1,77 @@
-
 <section class="inputArea">
-    <form>
+    @if(userReviwed){
+    <mat-card>
+        <mat-card-content>
+            <h2>You have already reviewed this restaurant</h2>
+        </mat-card-content>
+    </mat-card>
+    }
+    @else {
+
+    <form [formGroup]="form" (ngSubmit)="submitComment()" #commentForm="ngForm">
         <mat-form-field>
             <mat-label>Message</mat-label>
-            <textarea #commentText matInput id="commentText"></textarea>
+            <textarea matInput id="commentText" formControlName="comment" placeholder="Write your comment"></textarea>
         </mat-form-field>
+
+        <div>
+            @for(star of stars; track $index) {
+            <span id="starSelector" (click)="selectRating($index + 1)" [class.filled]="$index < rating"> {{ $index <
+                    rating ? '★' : '☆' }} </span>
+                    }
+        </div>
+
+        <button id="formButton" mat-flat-button color="primary" [disabled]="form.invalid">Comentar</button>
     </form>
-    <button mat-flat-button>Comentar</button>
-    
+    }
 </section>
 
+<section class="reviews">
+    @for (review of reviewList; track $index) {
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <div mat-card-avatar class="small-image"
+                style="background-image: url(https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/bee.jpg);">
+            </div>
+            <div class="card-header-content">
+                <mat-card-title>{{ review['user']['name'] }}</mat-card-title>
+                <mat-card-subtitle>
+                    @for(star of stars; track $index) {
+                    {{ $index < review['_doc']['rating'] ? '★' : '☆' }} } </mat-card-subtitle>
+            </div>
+            @if(review['user']['_id'] == userId) {
 
-<section class="comments">
-    <mat-card appearance="outlined">
-        <mat-card-header>
-            <div mat-card-avatar class="small-image" style="background-image: url(https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/bee.jpg);"></div>
-            <mat-card-title>Beja</mat-card-title>
-            <mat-card-subtitle>Administrador</mat-card-subtitle>
+            <div class="header-actions">
+                <button mat-icon-button (click)="toggleEditReview(review)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteReview(review['_doc']['_id'])">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            }
         </mat-card-header>
-        <mat-card-content>Según todas las leyes sabidas de aviación, no hay ninguna manera una abeja tendría que ser capaz de volar. Sus alas son demasiado pequeñas de conseguir su gordos poco cuerpo de la tierra. La abeja, naturalmente, vuela en todo caso porque las abejas no se preocupan lo que los humanos piensan es imposible. Amarillo, negro. Amarillo, negro. Amarillo, negro. Amarillo, negro. Ooh, negro y amarillo! </mat-card-content>
+        @if(review.isEditing){
+        <form [formGroup]="form" (ngSubmit)="editReview(review['_doc']['_id'])" #commentForm="ngForm">
+            <mat-form-field>
+                <mat-label>Message</mat-label>
+                <textarea matInput id="commentText" formControlName="comment"></textarea>
+            </mat-form-field>
+
+            <div>
+                @for(star of stars; track $index) {
+                <span id="starSelector" (click)="selectRating($index + 1)" [class.filled]="$index < rating"> {{ $index <
+                        rating ? '★' : '☆' }} </span>
+                        }
+            </div>
+
+            <button id="formButton" mat-flat-button color="primary" [disabled]="form.invalid">Comentar</button>
+        </form>
+        }
+        @else {
+        <mat-card-content>{{ review['_doc']['content'] }}</mat-card-content>
+        }
     </mat-card>
-    <mat-card appearance="outlined">
-        <mat-card-header>
-            <div mat-card-avatar class="small-image" style="background-image: url(https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/gato.jpg);"></div>
-            <mat-card-title>Albion</mat-card-title>
-            <mat-card-subtitle>Usuario</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>Albion Online es un mmorpg no lineal, en el que escribes tu propia historia sin limitarte a seguir un camino prefijado. Explora un amplio mundo abierto con 5 biomas únicos, todo cuánto hagas tendrá su repercusión en el mundo. Aventúrate en el mundo abierto frente a los habitantes y las criaturas de Albion, inicia expediciones o adéntrate en mazmorras en las que encontrarás enemigos aún más difíciles, enfréntate a otros jugadores en encuentros en el mundo abierto, únete a un gremio, todo es mejor cuando se trabaja en grupo. Adéntrate ya en el mundo de Albion y escribe tu propia historia.</mat-card-content>
-    </mat-card>
-    <mat-card appearance="outlined">
-        <mat-card-header>
-            <div mat-card-avatar class="small-image" style="background-image: url(https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/trans.png);"></div>
-            <mat-card-title>NoobMaster69</mat-card-title>
-            <mat-card-subtitle>Usuario</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>Para entender la historia de Five Nights at Freddy's hay que olvidarse que estos son juegos y quiero que tomen realmente a esta saga como lo que es. ¿Terror? Sí, pero sobre todo, ciencia ficción. Antes de comenzar, quiero decir que esta cronología la realizamos entre 3 youtubers conocidos de Five Nights at Freddy's y yo. Por lo tanto, agradecería que si les gusta el contenido de este juego vayan a visitar sus canales. Ahora sí, empecemos. ¿Qué pasaría si dos amigos se abren una pizzería? Esa es la primera pregunta que hay que plantearnos. Lo normal sería que todo vaya medianamente bien con algún tipo de problemas, pero nada saldría más allá de eso. La pregunta cambia completamente si nos preguntamos ¿Qué pasaría si Henry y William abren una pizzería?</mat-card-content>
-    </mat-card>
-    <mat-card appearance="outlined">
-        <mat-card-header>
-            <div mat-card-avatar class="small-image" style="background-image: url(https://raw.githubusercontent.com/YANDR0/images/refs/heads/main/assets/bashame.png);"></div>
-            <mat-card-title>Arroz</mat-card-title>
-            <mat-card-subtitle>Administrador</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>Amo a Bashame de Shikanoko Nokonoko Koshitantan de las mejores integrantes del club de ciervos la cuarta en ser incluida si conociera a Bashame en persona la abrazaría y le pediría que me toque el hombro y que me diga que todo estará bien entregándome un plato de arroz y que ella siempre estará ahí quisiera vivir en Hino y entrar al club de ciervos y conocer a alguien y cuando finalmente me pida su mano le diga que si y le presentaría a Bashame </mat-card-content>
-    </mat-card>
-    
+    }
+
 </section>
