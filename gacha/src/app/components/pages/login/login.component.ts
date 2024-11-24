@@ -62,7 +62,22 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    const googleAuthUrl = `${environment.SERVER_URL}session/google`;
-    window.location.href = googleAuthUrl;
+    this.loginService.loginGoogle().subscribe({
+      next: (response) => {
+        console.log('Google Login successful:', response);
+  
+        // Guardar el token y el usuario en el AuthService
+        this.authService.saveToken(response.token);
+        this.authService.saveUser(response.user);
+  
+        // Redirigir al home
+        this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
+      },
+      error: (error) => {
+        console.error('Error during Google login:', error);
+        alert('Google Login failed. Please try again.');
+      }
+    });
   }
+  
 }

@@ -19,7 +19,7 @@ export class LoginService {
     return this.httpService.postHttp('session/login', userData)
   }
 
-  loginGoogle(): Observable<any>{
-    return this.httpService.getHttp('session/google')
+  loginGoogle(): Observable<any> {
+    return this.httpService.getHttp('session/google');
   }
 }
