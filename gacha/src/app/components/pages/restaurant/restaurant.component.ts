@@ -21,6 +21,7 @@ export class RestaurantComponent implements OnInit {
   stars = "";
   show = false;
   score = 6;
+  role: number|undefined = -1;
 
   constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService, private listService: ListsService) {
     // Verifica si el usuario está logueado
@@ -32,6 +33,7 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.restaurantService.getUrlId()
+    this.role = this.authService.getRole();
     this.restaurantService.getRestaurantData(this.id).subscribe(
       (data: Restaurants) => {
         if (!data) this.router.navigate(['not-found']);
@@ -55,10 +57,15 @@ export class RestaurantComponent implements OnInit {
 
 
   listConfirm(){
-
     this.listService.createElement(this.authService.getUserId() + '', this.restaurant?._id + '', this.score).subscribe(() => {
       this.show = false;
     })
-    
   }
+
+  deleteRestaurant(){
+    this.restaurantService.deleteElement(this.restaurant?._id + '').subscribe(() => {
+      this.router.navigate(['login']);
+    })
+  }
+
 }

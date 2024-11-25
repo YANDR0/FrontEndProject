@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../../modules/material/material.module';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/shared/auth.service';
 import { Restaurants } from '../../../types/restaurants';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
@@ -12,7 +12,7 @@ import { CategoriesService } from '../../../services/shared/categories.service';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [MaterialModule, CommonModule],
+  imports: [MaterialModule, CommonModule, RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
@@ -79,5 +79,9 @@ export class SearchComponent implements OnInit {
       return valid;
     });
     
+  }
+
+  changePage(_id: string|undefined){
+    this.router.navigate(['restaurant/'+_id]);
   }
 }

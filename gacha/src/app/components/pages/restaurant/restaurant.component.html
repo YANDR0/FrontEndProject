@@ -15,6 +15,9 @@
                 <a mat-fab extended routerLink="reviews">Reviews</a>
                 <a mat-fab extended routerLink="../{{id}}">Info</a>
                 <a mat-fab extended (click)="show=true">Add to list</a>
+                @if(role==0){
+                    <a mat-fab extended (click)="deleteRestaurant()">Delete</a>
+                }
             </div>
         </section>
     </section>

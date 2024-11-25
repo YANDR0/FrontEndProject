@@ -30,4 +30,9 @@ export class RestaurantService {
     last = last != 'reviews' ? last : url.pop();
     return last ? last : "";
   }
+
+  deleteElement(_id: string){
+    const data = {_id};
+    return this.httpService.deleteHttpAuth('restaurant', data);
+  }
 }
