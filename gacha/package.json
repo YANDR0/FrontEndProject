@@ -1,6 +1,7 @@
 {
   "name": "gacha",
   "version": "0.0.0",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +10,8 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "host": "ng build && node ."
   },
   "private": true,
   "dependencies": {
