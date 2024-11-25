@@ -38,9 +38,14 @@
       </mat-form-field>
   
       <!-- Campo de categoría -->
-      <mat-form-field class="category">
-        <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="restaurant.category" placeholder="Enter the category" />
+      <mat-form-field class="location">
+        <mat-label>categories</mat-label>
+        <mat-select>
+          @for (c of categories; track $index) {
+            <mat-checkbox (change)="onCheckboxChange($event, c.category)">{{c.category}}</mat-checkbox>
+          }
+          <mat-option>Confirmar</mat-option>
+        </mat-select>
       </mat-form-field>
   
       <!-- Input de archivo para imagen -->

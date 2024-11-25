@@ -1,37 +1,47 @@
 import { Component } from '@angular/core';
 import { MaterialModule } from '../../../modules/material/material.module';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/shared/auth.service';
 import { Restaurants } from '../../../types/restaurants';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
 import { CommonModule } from '@angular/common';
+import { Category } from '../../../types/category';
+import { CategoriesService } from '../../../services/shared/categories.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-create-restaurant',
   standalone: true,
-  imports: [MaterialModule, FormsModule, CommonModule, RouterModule],
+  imports: [MaterialModule, FormsModule, CommonModule, RouterModule], 
   templateUrl: './create-restaurant.component.html',
   styleUrls: ['./create-restaurant.component.scss']
 })
 export class CreateRestaurantComponent {
   selectedFile: File | null = null;
+  categories: Category[] = [];
   
   restaurant: Restaurants = {
     name: '',
     rating: 0,
     description: '',
     image: '',
-    category: [''],
+    category: [],
     location: 0,
     price: 0
   };
 
-  constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService) {
+  constructor(private router: Router, private authService: AuthService, private restaurantService: RestaurantService, private categoryService: CategoriesService) {
     // Verifica si el usuario está logueado
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['login']); 
     }
+  }
+
+  ngOnInit() {
+    this.categoryService.getAllCategories().subscribe((data: Category[]) => {
+      this.categories = data;
+    })
   }
 
   triggerFileInput(): void {
@@ -44,6 +54,19 @@ export class CreateRestaurantComponent {
       this.selectedFile = file;
       console.log('Archivo seleccionado:', file.name);
     }
+  }
+
+  onCheckboxChange(event: MatCheckboxChange, val: string){
+    if(event.checked){
+      this.restaurant.category.push(val);
+      console.log(this.restaurant.category)
+      return
+    }
+    const index = this.restaurant.category.indexOf(val);
+    if(index !== -1)
+      this.restaurant.category.splice(index, 1);
+
+    console.log(this.restaurant.category)
   }
 
   onConfirm(): void {

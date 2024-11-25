@@ -2,7 +2,7 @@
     <h1>Trending</h1>
     <div class="cards">
         @for (restaurant of trending; track $index) {
-        <mat-card appearance="outlined" routerLink="search">
+        <mat-card appearance="outlined" routerLink="search" routerLink="../restaurant/{{restaurant._id}}">
             <!-- TODO Make the card an anchor-->
             <img mat-card-image src={{restaurant.image}}>
             <mat-card-content>

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../../modules/material/material.module';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
-import { Restaurants } from '../../../types/restaurants';
+import { Restaurants } from '../../../types/restaurants'; 
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MaterialModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
