@@ -68,42 +68,42 @@ export class CreateRestaurantComponent {
 
   onConfirm(): void {
     const formData = new FormData();
-    
+
     if (this.restaurant.name) {
-      formData.append('name', this.restaurant.name);
+        formData.append('name', this.restaurant.name);
     }
     if (this.restaurant.location) {
-      formData.append('location', this.restaurant.location.toString());
+        formData.append('location', this.restaurant.location.toString());
     }
     if (this.restaurant.rating) {
-      formData.append('rating', this.restaurant.rating.toString());
+        formData.append('rating', this.restaurant.rating.toString());
     }
     if (this.restaurant.description) {
-      formData.append('description', this.restaurant.description);
+        formData.append('description', this.restaurant.description);
     }
-    if (this.restaurant.category) {
-      formData.append('category', JSON.stringify(this.restaurant.category)); //aqui cambia el coso
+    if (this.restaurant.category && this.restaurant.category.length > 0) {
+        this.restaurant.category.forEach((category) => {
+            formData.append('category', category);
+        });
     }
     if (this.restaurant.price) {
-      formData.append('price', this.restaurant.price.toString());
+        formData.append('price', this.restaurant.price.toString());
     }
-    
     if (this.selectedFile) {
-      formData.append('file', this.selectedFile, this.selectedFile.name); 
+        formData.append('file', this.selectedFile, this.selectedFile.name);
     }
-    
+
     console.log('Datos: ', formData);
 
     // Enviar los datos al backend
     this.restaurantService.createRestaurant(formData).subscribe({
-      next: (newRestaurant) => {
-        console.log('Restaurante creado:', newRestaurant);
-        this.router.navigate(['/home']); // Redirigir a home
-      },
-      error: (error) => {
-        console.error('Error al crear el restaurante:', error);
-      },
+        next: (newRestaurant) => {
+            console.log('Restaurante creado:', newRestaurant);
+            this.router.navigate(['/home']); // Redirigir a home
+        },
+        error: (error) => {
+            console.error('Error al crear el restaurante:', error);
+        },
     });
-  }
-  
+}
 }
