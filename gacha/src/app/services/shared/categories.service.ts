@@ -9,7 +9,7 @@ export class CategoriesService {
   constructor(private httpService: HttpService) { }
 
   getAllCategories() {
-    return this.httpService.getHttp('restaurant');
+    return this.httpService.getHttp('category');
   }
   
 }

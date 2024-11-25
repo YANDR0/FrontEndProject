@@ -59,14 +59,11 @@ export class CreateRestaurantComponent {
   onCheckboxChange(event: MatCheckboxChange, val: string){
     if(event.checked){
       this.restaurant.category.push(val);
-      console.log(this.restaurant.category)
       return
     }
     const index = this.restaurant.category.indexOf(val);
     if(index !== -1)
       this.restaurant.category.splice(index, 1);
-
-    console.log(this.restaurant.category)
   }
 
   onConfirm(): void {
