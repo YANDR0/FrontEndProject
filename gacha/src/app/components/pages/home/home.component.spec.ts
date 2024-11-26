@@ -3,6 +3,7 @@ import { HomeComponent } from './home.component';
 import { RestaurantService } from '../../../services/shared/restaurant.service';
 import { of } from 'rxjs';
 import { Restaurants } from '../../../types/restaurants';
+import { ActivatedRoute } from '@angular/router';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,9 +18,8 @@ describe('HomeComponent', () => {
       description: 'Cozy place with great food',
       image: 'image-a.jpg',
       category: ['Italian', 'Pasta'],
-      location: 'City Center',
+      location: 1,
       price: 30,
-      __v: 0,
     },
     {
       _id: '2',
@@ -28,9 +28,8 @@ describe('HomeComponent', () => {
       description: 'Modern vibes with excellent service',
       image: 'image-b.jpg',
       category: ['American', 'Burgers'],
-      location: 'Uptown',
+      location: 5,
       price: 25,
-      __v: 0,
     },
     {
       _id: '3',
@@ -39,9 +38,8 @@ describe('HomeComponent', () => {
       description: 'Best sushi in town',
       image: 'image-c.jpg',
       category: ['Japanese', 'Sushi'],
-      location: 'Downtown',
+      location: 2,
       price: 40,
-      __v: 0,
     },
     {
       _id: '4',
@@ -50,9 +48,8 @@ describe('HomeComponent', () => {
       description: 'Classic diner experience',
       image: 'image-d.jpg',
       category: ['Diner', 'Breakfast'],
-      location: 'Midtown',
+      location: 1,
       price: 20,
-      __v: 0,
     },
     {
       _id: '5',
@@ -61,9 +58,8 @@ describe('HomeComponent', () => {
       description: 'Authentic Mexican flavors',
       image: 'image-e.jpg',
       category: ['Mexican', 'Tacos'],
-      location: 'Westside',
+      location: 6,
       price: 15,
-      __v: 0,
     },
     {
       _id: '6',
@@ -72,9 +68,8 @@ describe('HomeComponent', () => {
       description: 'Luxury dining experience',
       image: 'image-f.jpg',
       category: ['French', 'Gourmet'],
-      location: 'Eastside',
+      location: 9,
       price: 100,
-      __v: 0,
     },
     {
       _id: '7',
@@ -83,9 +78,8 @@ describe('HomeComponent', () => {
       description: 'Great pizza and family-friendly',
       image: 'image-g.jpg',
       category: ['Italian', 'Pizza'],
-      location: 'Suburbs',
+      location: 1,
       price: 18,
-      __v: 0,
     },
   ];
 
@@ -95,7 +89,10 @@ describe('HomeComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [HomeComponent], // Import HomeComponent as it is standalone
-      providers: [{ provide: RestaurantService, useValue: mockRestaurantService }], // Mock the service
+      providers: [
+        { provide: RestaurantService, useValue: mockRestaurantService }, // Mock the service
+        { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: () => null } } } }, // Mock ActivatedRoute
+      ],
     }).compileComponents();
   });
 
