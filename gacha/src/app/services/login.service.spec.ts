@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { LoginService } from './login.service';
 import { HttpService } from './shared/http-service';
 import { Users } from '../types/users';
+import { of } from 'rxjs';
 
 describe('LoginService', () => {
   let service: LoginService;
@@ -27,10 +28,10 @@ describe('LoginService', () => {
 
   describe('login', () => {
     fit('should start session with correct data', () => {
-      const mockRes = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
+      const mockResponse = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
       const mockData: Users = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
       mockHttpService.postHttpAuth.and.returnValue(of(mockResponse));
-      service.getRestaurantData(mockId).subscribe((response) => {
+      service.getRestaurantData(mockData).subscribe((response) => {
         expect(response).toBeDefined();
       });
     });
