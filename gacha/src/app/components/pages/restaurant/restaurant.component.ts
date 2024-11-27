@@ -64,7 +64,7 @@ export class RestaurantComponent implements OnInit {
 
   deleteRestaurant(){
     this.restaurantService.deleteElement(this.restaurant?._id + '').subscribe(() => {
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
     })
   }
 
