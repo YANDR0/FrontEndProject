@@ -31,7 +31,7 @@ describe('LoginService', () => {
       const mockResponse = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
       const mockData: Users = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
       mockHttpService.postHttpAuth.and.returnValue(of(mockResponse));
-      service.getRestaurantData(mockData).subscribe((response) => {
+      service.getRestaurantData(mockData).subscribe((response: Users) => {
         expect(response).toBeDefined();
       });
     });
