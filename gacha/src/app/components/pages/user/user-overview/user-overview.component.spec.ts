@@ -9,7 +9,6 @@ describe('UserOverviewComponent', () => {
   let component: UserOverviewComponent;
   let fixture: ComponentFixture<UserOverviewComponent>;
   let mockUserService: jasmine.SpyObj<UserService>;
-
   const mockUser: Users = {
     _id: '1',
     email: 'emailtest@email.com',
@@ -22,7 +21,6 @@ describe('UserOverviewComponent', () => {
   beforeEach(async () => {
     mockUserService = jasmine.createSpyObj('UserService', ['getUserData']);
     mockUserService.getUserData.and.returnValue(of(mockUser));
-
     await TestBed.configureTestingModule({
       imports: [UserOverviewComponent], // Importamos el componente standalone
       providers: [
@@ -41,14 +39,12 @@ describe('UserOverviewComponent', () => {
   fit('should create the component', () => {
     expect(component).toBeTruthy();
   });
-
   fit('should load user data from sessionStorage on initialization', () => {
     spyOn(sessionStorage, 'getItem').and.returnValue(JSON.stringify(mockUser));
     component.ngOnInit();
     expect(sessionStorage.getItem).toHaveBeenCalledWith('user');
     expect(component.user).toEqual(mockUser);
   });
-
   fit('should handle missing user data in sessionStorage', () => {
     spyOn(sessionStorage, 'getItem').and.returnValue(null);
     spyOn(console, 'error'); // Mockeamos el console.error
@@ -56,13 +52,11 @@ describe('UserOverviewComponent', () => {
     expect(console.error).toHaveBeenCalledWith('No se encontró el usuario en sessionStorage');
     expect(component.user).toBeNull();
   });
-
   fit('should return correct location text based on location ID', () => {
     const locationId = 1; // Guadalajara, Jalisco
     const locationText = component.getLocationText(locationId);
     expect(locationText).toBe('Guadalajara, Jalisco');
   });
-
   fit('should return "Ubicación no especificada" for unknown location ID', () => {
     const unknownLocationId = 999;
     const locationText = component.getLocationText(unknownLocationId);

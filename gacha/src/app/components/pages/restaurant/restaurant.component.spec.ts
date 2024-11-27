@@ -1,61 +1,45 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RestaurantComponent } from './restaurant.component';
-import { Restaurants } from '../../../types/restaurants';
-import { RestaurantService } from '../../../services/shared/restaurant.service';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { RestaurantComponent } from './restaurant.component';
+import { Users } from '../../../types/users';
 
-describe('RestaurantComponent', () => {
+describe('UserOverviewComponent', () => {
   let component: RestaurantComponent;
   let fixture: ComponentFixture<RestaurantComponent>;
-  let mockRestaurantService: jasmine.SpyObj<RestaurantService>;
 
-  const mockRestaurant: Restaurants =
-    {
-      _id: '1',
-      name: 'Restaurant A',
-      rating: 4,
-      description: 'Cozy place with great food',
-      image: 'image-a.jpg',
-      category: ['Italian', 'Pasta'],
-      location: 1,
-      price: 30,
-    };
+  const mockUser: Users = {
+    _id: '1',
+    email: 'emailtest@email.com',
+    name: 'John Doe',
+    image: 'https://via.placeholder.com/150',
+    biography: 'This is a test biography',
+    location: 1,
+  };
 
-    beforeEach(async () => {
-      mockRestaurantService = jasmine.createSpyObj('RestaurantService', ['getRestaurantData']);
-      mockRestaurantService.getRestaurantData.and.returnValue(of(mockRestaurant));
-  
-      await TestBed.configureTestingModule({
-        imports: [RestaurantComponent], // Import HomeComponent as it is standalone
-        providers: [
-          { provide: RestaurantService, useValue: mockRestaurantService }, // Mock the service
-          { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: () => null } } } }, // Mock ActivatedRoute
-        ],
-      }).compileComponents();
-    });
-  
-    beforeEach(() => {
-      fixture = TestBed.createComponent(RestaurantComponent); // Create the component
-      component = fixture.componentInstance; // Get an instance of the component
-      fixture.detectChanges(); // Trigger lifecycle hooks
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RestaurantComponent], // Importamos el componente standalone
+      providers: [
+        { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: () => null } } } }, // Mock ActivatedRoute
+      ],
+    }).compileComponents();
+  });
 
-  fit('should create', () => {
+  beforeEach(() => {
+    fixture = TestBed.createComponent(RestaurantComponent); // Instanciamos el componente
+    component = fixture.componentInstance;
+    fixture.detectChanges(); // Disparamos los ciclos de vida
+  });
+
+  fit('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should fetch restaurant with and specific id', () => {
-    expect(mockRestaurantService.getRestaurantData).toHaveBeenCalled();
-    expect(component.restaurant).toBe(mockRestaurant);
+  fit('should load user data from sessionStorage on initialization', () => {
+    spyOn(sessionStorage, 'getItem').and.returnValue(JSON.stringify(mockUser));
+    component.ngOnInit();
+    expect(sessionStorage.getItem).toHaveBeenCalledWith('user');
+    expect(component.id).toBeDefined();
   });
-
-  fit('should have same stars as rating', () => {
-    expect(component.stars).toBe("★".repeat(mockRestaurant.rating) + "☆".repeat(5 - mockRestaurant.rating));
-  });
-
-  fit('should be hidden in the beggining', () => {
-    expect(component.show).toBe(false);
-  });
-
-});
+})
