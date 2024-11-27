@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   search = false;
 
   category = "";
-  ubication = 0;
+  ubication = "";
   minScore = 0;
   maxScore = 5;
   minCost = 0;
@@ -48,13 +48,12 @@ export class SearchComponent implements OnInit {
       this.categories = data;
       console.log(this.categories)
     })
-    //this.categoriesService.
   }
 
   resetValues(){
     this.search = false;
     this.category = "";
-    this.ubication = 0;
+    this.ubication = "";
     this.minScore = 0;
     this.maxScore = 5;
     this.minCost = 0;
@@ -69,7 +68,7 @@ export class SearchComponent implements OnInit {
     this.filteredRestaurants = this.restaurants.filter((r) => {
       let valid = true;
       
-      if(this.ubication) valid &&= r.location == this.ubication
+      if(this.ubication) valid &&= r.location.toString() == this.ubication;
       if(this.category) valid &&= r.category.includes(this.category);
       if(this.maxScore != 5 || this.minScore != 0)
         valid &&= (r.rating <= this.maxScore && r.rating >= this.minScore); 
@@ -77,8 +76,7 @@ export class SearchComponent implements OnInit {
         valid &&= (r.price <= this.maxCost && r.price >= this.minCost); 
 
       return valid;
-    });
-    
+    });    
   }
 
   changePage(_id: string|undefined){
