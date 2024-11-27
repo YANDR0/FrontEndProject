@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { LoginService } from './login.service';
 import { HttpService } from './shared/http-service';
 import { Users } from '../types/users';
@@ -10,7 +9,7 @@ describe('LoginService', () => {
   let mockHttpService: jasmine.SpyObj<HttpService>;
 
   beforeEach(() => {
-    mockHttpService = jasmine.createSpyObj('HttpService', ['getHttp', 'postHttpAuth']);
+    mockHttpService = jasmine.createSpyObj('HttpService', ['getHttp', 'postHttp']);
 
     TestBed.configureTestingModule({
       providers: [
@@ -28,10 +27,10 @@ describe('LoginService', () => {
 
   describe('login', () => {
     fit('should start session with correct data', () => {
-      const mockResponse = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
-      const mockData: Users = { _id: '1', name: 'Restaurant A', email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
-      mockHttpService.postHttpAuth.and.returnValue(of(mockResponse));
-      service.getRestaurantData(mockData).subscribe((response: Users) => {
+      const mockResponse = { email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
+      const mockData: Users = { email:'yael.alexrb@gmail.com', password:'qwertyuiop'};
+      mockHttpService.postHttp.and.returnValue(of(mockResponse));
+      service.login(mockData).subscribe((response: Users) => {
         expect(response).toBeDefined();
       });
     });
