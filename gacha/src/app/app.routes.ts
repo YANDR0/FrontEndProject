@@ -12,6 +12,7 @@ import { CreateRestaurantComponent } from './components/pages/create-restaurant/
 import { RestaurantOverviewComponent } from './components/pages/restaurant/restaurant-overview/restaurant-overview.component';
 import { UserOverviewComponent } from './components/pages/user/user-overview/user-overview.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { VerifyComponent } from './components/pages/verify/verify.component';
 
 
 export const routes: Routes = [
@@ -23,7 +24,7 @@ export const routes: Routes = [
     { path: 'search/:id', component: SearchComponent },
     { path: 'create-restaurant', component: CreateRestaurantComponent },
     { path: 'create-restaurant/:id', component: CreateRestaurantComponent },
-
+    { path: 'verify', component: VerifyComponent },
     {
         path: 'restaurant/:id', component: RestaurantComponent, children: [
             { path: '', component: RestaurantOverviewComponent },

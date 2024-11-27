@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { RestaurantComponent } from './restaurant.component';
-import { Users } from '../../../types/users';
+import { RestaurantOverviewComponent } from './restaurant-overview.component';
+import { Users } from '../../../../types/users';
 
-describe('RestaurantComponent', () => {
-  let component: RestaurantComponent;
-  let fixture: ComponentFixture<RestaurantComponent>;
+describe('RestaurantOverviewComponent', () => {
+  let component: RestaurantOverviewComponent;
+  let fixture: ComponentFixture<RestaurantOverviewComponent>;
 
   const mockUser: Users = {
     _id: '1',
@@ -18,7 +18,7 @@ describe('RestaurantComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RestaurantComponent], // Importamos el componente standalone
+      imports: [RestaurantOverviewComponent], // Importamos el componente standalone
       providers: [
         { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: () => null } } } }, // Mock ActivatedRoute
       ],
@@ -26,7 +26,7 @@ describe('RestaurantComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RestaurantComponent); // Instanciamos el componente
+    fixture = TestBed.createComponent(RestaurantOverviewComponent); // Instanciamos el componente
     component = fixture.componentInstance;
     fixture.detectChanges(); // Disparamos los ciclos de vida
   });

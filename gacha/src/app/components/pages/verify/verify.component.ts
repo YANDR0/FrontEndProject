@@ -16,6 +16,7 @@ export class VerifyComponent implements OnInit {
   ngOnInit(): void {
     this.activadedRoute.queryParams.subscribe((params) => {
       const token = params['token'];
+      console.log("Params: ",token);
       if (token) {
         this.authService.saveToken(token);
         this.loginService.loginGoogle().subscribe({

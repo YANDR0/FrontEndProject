@@ -20,20 +20,17 @@ export class LoginService {
   }
 
   loginGoogle(): Observable<any> {
-    return this.httpService.getHttp('profile').pipe(
-      map((response) => {
-        const userData = response;
-
-        this.authService.saveUser(userData);
-        //const userDataCopy = { ...userData } as Users;
-        //this.authService.setUserData(userDataCopy);
-
-        return response;
+    return this.httpService.getHttpAuth('session/profile').pipe(
+      map((user) => {
+        console.log("Datos del usuario recibido desde el backend:", user);
+        this.authService.saveUser(user); // Guarda la información del usuario
+        return user;
       }),
       catchError((error) => {
-        console.error('Error en el login con Google: ', error);
+        console.error('Error en el login con Google:', error);
         return of();
       }),
     );
   }
+
 }
