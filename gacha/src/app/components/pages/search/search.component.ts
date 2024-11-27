@@ -24,11 +24,12 @@ export class SearchComponent implements OnInit {
   search = false;
 
   category = "";
-  ubication = "";
+  ubication = 0;
   minScore = 0;
   maxScore = 5;
   minCost = 0;
   maxCost = 1000;
+  keyword = "";
 
 
   constructor(private router: Router, private authService: AuthService, private restaurantsService: RestaurantService, private categoriesService: CategoriesService) {
@@ -53,11 +54,12 @@ export class SearchComponent implements OnInit {
   resetValues(){
     this.search = false;
     this.category = "";
-    this.ubication = "";
+    this.ubication = 0;
     this.minScore = 0;
     this.maxScore = 5;
     this.minCost = 0;
     this.maxCost = 1000;
+    this.keyword = "";
   }
 
   filterRestaurants() {
@@ -68,12 +70,16 @@ export class SearchComponent implements OnInit {
     this.filteredRestaurants = this.restaurants.filter((r) => {
       let valid = true;
       
-      if(this.ubication) valid &&= r.location.toString() == this.ubication;
-      if(this.category) valid &&= r.category.includes(this.category);
+      if(this.ubication) 
+        valid &&= r.location == this.ubication;
+      if(this.category) 
+        valid &&= r.category.includes(this.category);
       if(this.maxScore != 5 || this.minScore != 0)
         valid &&= (r.rating <= this.maxScore && r.rating >= this.minScore); 
       if(this.maxCost != 1000 || this.minCost != 0)
         valid &&= (r.price <= this.maxCost && r.price >= this.minCost); 
+      if(this.keyword) 
+        valid &&= r.name.toLowerCase().includes(this.keyword.toLowerCase());
 
       return valid;
     });    
