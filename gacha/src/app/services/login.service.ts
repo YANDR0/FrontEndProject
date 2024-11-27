@@ -12,7 +12,6 @@ export class LoginService {
 
   constructor(private httpService: HttpService, private authService: AuthService) {
     //Login logic
-
   }
 
   login(userData: Users): Observable<any> {
